@@ -32,6 +32,18 @@ Five Claude Code skills live in `.claude/skills/`. Invoke the meta-skill for any
 
 Or invoke a specific skill directly, e.g. `/family-report`.
 
+## Importing into Claude Cowork
+
+Download [`dist/lucapath-plugin.plugin`](dist/lucapath-plugin.plugin), then:
+
+1. Open Claude Cowork → left sidebar → **"+"** next to *Personal plugins*
+2. Choose **Upload plugin**
+3. Select `lucapath-plugin.plugin`
+
+All five skills are now available in Cowork. Invoke them by typing `/lucapath` (or `/personal-destiny-report`, `/family-report`, etc.) in any chat.
+
+---
+
 ## Packaging Skills for Distribution
 
 `scripts/pack.py` converts `.claude/skills/` into distributable artifacts with no external dependencies.

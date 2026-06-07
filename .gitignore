@@ -2,7 +2,8 @@
 .DS_Store
 
 # Build artifacts — regenerate with: python3 scripts/pack.py
-dist/
+dist/*.skill
+dist/lucapath-plugin/
 
 # Generated client reports (sensitive data)
 Report/

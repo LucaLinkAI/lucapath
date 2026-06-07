@@ -93,7 +93,7 @@ def main():
     parser.add_argument("--out",         default="dist",           help="Output directory")
     parser.add_argument("--plugin-name", default="lucapath-plugin",help="Plugin folder name")
     parser.add_argument("--no-zips",     action="store_true",       help="Skip .skill zip generation")
-    parser.add_argument("--no-plugin",   action="store_true",       help="Skip plugin dir generation")
+    parser.add_argument("--no-plugin",   action="store_true",       help="Skip plugin dir + .plugin archive generation")
     args = parser.parse_args()
 
     root        = Path(__file__).parent.parent
@@ -125,6 +125,19 @@ def main():
         for f in sorted(plugin_dir.rglob("*")):
             if f.is_file():
                 print(f"  {f.relative_to(out_dir)}")
+
+        print(f"\n── .plugin archive ──────────────────────")
+        plugin_zip = out_dir / f"{args.plugin_name}.plugin"
+        with zipfile.ZipFile(plugin_zip, "w", zipfile.ZIP_DEFLATED) as zf:
+            for f in plugin_dir.rglob("*"):
+                if not f.is_file():
+                    continue
+                arc = f.relative_to(out_dir)
+                if skip(arc):
+                    continue
+                zf.write(f, arc)
+        kb = plugin_zip.stat().st_size // 1024
+        print(f"  {plugin_zip.name:<40}  {kb} KB")
 
     print(f"\nOutput → {out_dir}/")
 
