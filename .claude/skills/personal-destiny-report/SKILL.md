@@ -115,6 +115,8 @@ Show a brief summary, then ask:
 > **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须按 `references/astro-calculations.md` 中的公式现场推算。严禁直接沿用或继承对话记录中已出现的任何命盘结论——即使用户或上一轮已给出"结果"，也必须独立验算后才能使用。
 >
 > **将星分类**：将星属于**命格类**，不属于凶煞类。在任何神煞表格或分析中，将星必须归入命格类区块。
+>
+> **神煞经典算法**：所有神煞必须严格按 `references/astro-calculations.md` 的**经典查表法**判定，禁止任何近似/自创判据。尤其注意四个高频错点：① **国印贵人**按日干查表（戊见丑，**不是**见巳/午）；② **太极贵人**按日干查表，单支命中即算有（戊己见辰戌丑未任一支，**不是**辰戌或丑未成对同现）；③ **阴阳差错**仅限经典12日（丙子丁丑戊寅辛卯壬辰癸巳丙午丁未戊申辛酉壬戌癸亥，庚戌/庚辰等**不算**）；④ **孤辰寡宿**按三会方 亥子丑/寅卯辰/巳午未/申酉戌 分组（**不是** 子丑寅/卯辰巳）。
 
 ### Step 1 — Calculate BaZi (八字)
 
@@ -135,7 +137,7 @@ For each of: year stem, year branch, month stem, month branch, day branch, hour 
 Check all four categories using the lookup tables in `references/astro-calculations.md` → Extended 神煞 section:
 
 - **命格类**: 魁罡 (day pillar exact match), 将星 (year/day branch group), 华盖 (year branch group — count all pillar hits), 驿马 (year/day branch group), 阴阳差错 (day pillar exact match)
-- **贵人类**: 文昌 (day stem lookup — count all 8 pillar hits), 天乙贵人 (day stem lookup — count all branch hits), 国印贵人 (正印 element branch in year/month), 太极贵人 (辰戌 pair and/or 丑未 pair both present in branches)
+- **贵人类**: 文昌 (day stem lookup — count all 8 pillar hits), 天乙贵人 (day stem lookup — count all branch hits), 国印贵人 (day stem lookup 经典查表: 甲戌乙亥丙丑丁寅戊丑己寅庚辰辛巳壬未癸申), 太极贵人 (day stem lookup 经典查表: 甲乙→子午 / 丙丁→卯酉 / 戊己→辰戌丑未 / 庚辛→寅亥 / 壬癸→巳申)
 - **人缘类**: 桃花 (year/day branch group — count all hits)
 - **凶煞类**: 羊刃 (day stem peak branch), 孤辰/寡宿 (year branch group, check for those branches elsewhere), 天罗地网 (戌 = 天罗 / 辰 = 地网 / both = 齐备), 劫煞/亡神 (year/day branch group)
 

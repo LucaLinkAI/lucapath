@@ -89,6 +89,8 @@ Month branch primary hidden stems (藏干主气):
 
 ### Key 神煞 (Special Stars) — Full Four-Category Reference
 
+> **经典算法强制规则**：所有神煞一律使用下列**经典查表法**判定，以**日干**或**年支/日支**为基准。严禁使用"正印元素所在支""成对地支同现"等近似/自创判据。逐项对照下表，命中才算"有"，并记录所在柱位与出现次数。
+
 #### Category 1: 命格类 (Character Stars)
 
 **魁罡 Iron Will**: Day pillar (stem+branch combined) must be exactly one of:
@@ -106,13 +108,14 @@ Count how many pillar branches hit the target. Indicates leadership and organiza
 - 亥卯未 → 驿马 at 巳 | 巳酉丑 → 驿马 at 亥
 Indicates cross-border opportunity, geographic mobility, career through movement.
 
-**华盖 Solitary/Spiritual Star** (from Year branch group):
+**华盖 Solitary/Spiritual Star** (from Year/Day branch group — 以年支或日支为基准):
 - 申子辰 → 华盖 at 辰 | 寅午戌 → 华盖 at 戌
 - 亥卯未 → 华盖 at 未 | 巳酉丑 → 华盖 at 丑
 Count all pillar branch occurrences. 双华盖 = artistic genius or spiritual depth; 三现 = extreme uniqueness (rare minority soul).
 
-**阴阳差错 Yin-Yang Misalignment**: Day pillar (stem+branch) is one of:
-壬子 | 壬午 | 癸丑 | 癸未 | 庚辰 | 庚戌 | 辛巳 | 辛亥 | 戊寅 | 戊申 | 己卯 | 己酉
+**阴阳差错 Yin-Yang Misalignment**: Day pillar (stem+branch) must be **exactly one of these 12 classical days** (经典十二日，不可增减):
+丙子 | 丁丑 | 戊寅 | 辛卯 | 壬辰 | 癸巳 | 丙午 | 丁未 | 戊申 | 辛酉 | 壬戌 | 癸亥
+⚠️ 常见误列（如 庚辰/庚戌/辛巳/辛亥/壬子/壬午/癸丑/癸未/己卯/己酉）**不属于**阴阳差错，切勿判为有。
 Indicates relationship timing challenges; the person often encounters partners at unusual life junctures.
 
 #### Category 2: 贵人类 (Nobility Stars)
@@ -129,21 +132,15 @@ Count occurrences across all 8 pillar characters. 双文昌 = exceptional intell
 - 壬/癸 → 卯 and 巳
 Count hits across all 8 pillar branches. Indicates powerful benefactors, noble connections, receiving timely help.
 
-**国印贵人 State Seal** (from Day stem — 正印 branch appears in year/month position):
-Appears when the branch whose primary hidden stem is the Day Master's 正印 element occurs in the year or month branch.
-正印 = element that generates Day Master with opposite polarity:
-- 甲/乙(木) → 正印 = yin/yang water respectively → check for 亥/子 in prominent branch
-- 丙/丁(火) → 正印 = yin/yang wood → check for 卯/寅
-- 戊/己(土) → 正印 = yin/yang fire → check for 午/巳
-- 庚/辛(金) → 正印 = yin/yang earth → check for 丑戌未/辰
-- 壬/癸(水) → 正印 = yin/yang metal → check for 酉/申
-双现 = extremely auspicious seal energy, authority and recognition through institutions.
+**国印贵人 State Seal** (from Day stem — 经典查表，按日干取定支):
+甲→戌 | 乙→亥 | 丙→丑 | 丁→寅 | 戊→丑 | 己→寅 | 庚→辰 | 辛→巳 | 壬→未 | 癸→申
+Check whether that single target branch appears in any of the 8 pillar branches; count occurrences. 双现 = extremely auspicious seal energy, authority and recognition through institutions.
+⚠️ 绝不可用"正印元素所在支"近似判定（例如戊日不是见巳/午，而是**严格见丑**）。
 
-**太极贵人 Supreme Noble** (chart contains paired storage branches):
-- Pair 1: both 辰 AND 戌 appear anywhere in the 8 pillar branches
-- Pair 2: both 丑 AND 未 appear anywhere in the 8 pillar branches
-Each complete pair = one 太极贵人. Both pairs present = 太极贵人双现. Indicates exceptional karmic fortune and "turn of fate" moments.
-Note: 辰戌 together also triggers 天罗地网 — both can coexist.
+**太极贵人 Supreme Noble** (from Day stem — 经典查表，按日干取定支):
+甲乙 → 子、午 | 丙丁 → 卯、酉 | 戊己 → 辰、戌、丑、未 | 庚辛 → 寅、亥 | 壬癸 → 巳、申
+Check whether the target branch(es) appear in the 8 pillar branches; count hits. 双现/多现 = exceptional karmic fortune and "turn of fate" moments.
+⚠️ 绝不可用"辰戌成对/丑未成对同现"判定——太极贵人是**按日干查定支**，单支命中即算有（如戊己日见辰、戌、丑、未任一支即为太极贵人，双支命中即双现）。
 
 #### Category 3: 人缘类 (Social Stars)
 
@@ -158,12 +155,12 @@ Count occurrences. Indicates romantic magnetism, social charm, strong public app
 甲→卯 | 乙→寅 | 丙→午 | 丁→巳 | 戊→午 | 己→巳 | 庚→酉 | 辛→申 | 壬→子 | 癸→亥
 If this branch appears in any pillar position: high energy, competitive drive, risk of overreach. Combined with 七杀 = powerful but volatile.
 
-**孤辰/寡宿 Solitude Stars** (from Year branch group):
-- 子/丑/寅 year → 孤辰 at 寅, 寡宿 at 戌
-- 卯/辰/巳 year → 孤辰 at 巳, 寡宿 at 丑
-- 午/未/申 year → 孤辰 at 申, 寡宿 at 辰
-- 酉/戌/亥 year → 孤辰 at 亥, 寡宿 at 未
-Check if 孤辰 or 寡宿 branch appears in any of the other 7 pillar positions. Indicates independent spirit, potential for solitude; not fatalistic.
+**孤辰/寡宿 Solitude Stars** (from Year branch — 经典三会方分组，以年支定):
+- 亥/子/丑 year → 孤辰 at 寅, 寡宿 at 戌
+- 寅/卯/辰 year → 孤辰 at 巳, 寡宿 at 丑
+- 巳/午/未 year → 孤辰 at 申, 寡宿 at 辰
+- 申/酉/戌 year → 孤辰 at 亥, 寡宿 at 未
+⚠️ 分组以经典三会方（亥子丑/寅卯辰/巳午未/申酉戌）为准，切勿用 子丑寅/卯辰巳 等错位分组。Check if 孤辰 or 寡宿 branch appears in any of the other 7 pillar positions. Indicates independent spirit, potential for solitude; not fatalistic.
 
 **天罗地网 Heaven Snare / Earth Net**:
 - 天罗: 戌 appears in any pillar branch position

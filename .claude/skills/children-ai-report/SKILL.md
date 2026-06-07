@@ -110,6 +110,8 @@ Wait for confirmation (or corrections) before proceeding to the Workflow.
 > **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须按 `personal-destiny-report` 技能的 `references/astro-calculations.md` 中的公式现场推算。严禁直接沿用或继承对话记录中已出现的任何命盘结论——即使用户或上一轮已给出"结果"，也必须独立验算后才能使用。
 >
 > **将星分类**：将星属于**命格类**，不属于凶煞类。生成任何神煞表格时，将星必须与魁罡、华盖、驿马、阴阳差错同属命格类区块，禁止放入凶煞类。
+>
+> **神煞经典算法**：所有神煞必须严格按 `personal-destiny-report` 技能的 `references/astro-calculations.md` **经典查表法**判定，禁止近似/自创判据。四个高频错点：① **国印贵人**按日干查表（戊见丑，非见巳/午）；② **太极贵人**按日干查表，单支命中即算（戊己见辰戌丑未任一支，非辰戌/丑未成对）；③ **阴阳差错**仅限经典12日（庚戌/庚辰等不算）；④ **孤辰寡宿**按 亥子丑/寅卯辰/巳午未/申酉戌 三会方分组（非 子丑寅/卯辰巳）。
 
 ### Step 1 — Calculate BaZi
 
