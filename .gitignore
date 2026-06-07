@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Build artifacts — regenerate with: python3 scripts/pack.py
+dist/
+
+# Generated client reports (sensitive data)
+Report/
+
+# Node
+node_modules/
+studio/node_modules/

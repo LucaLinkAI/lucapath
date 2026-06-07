@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LucaPath Skill 路由架构</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07101e;--bg2:#0a1525;--surf:#0f1e35;--card:#131f38;--card2:#172440;
+  --b:rgba(200,165,60,0.14);--b2:rgba(200,165,60,0.26);--b3:rgba(255,255,255,0.07);
+  --gold:#c8a03c;--gl:#e0bc5a;--gf:rgba(200,160,60,0.09);--gf2:rgba(200,160,60,0.16);
+  --w:rgba(240,234,216,1);--w8:rgba(240,234,216,0.8);--w6:rgba(240,234,216,0.6);--w4:rgba(240,234,216,0.4);--w2:rgba(240,234,216,0.18);
+  --personal:#3050a0;--personal-l:#7090e0;--personal-f:rgba(48,80,160,0.15);--personal-b:rgba(80,120,220,0.3);
+  --family:#1a5040;--family-l:#40b890;--family-f:rgba(26,80,64,0.15);--family-b:rgba(60,180,140,0.3);
+  --child:#6a1428;--child-l:#e08090;--child-f:rgba(106,20,40,0.15);--child-b:rgba(220,80,100,0.3);
+  --meta:#7a3010;--meta-l:#e8a050;--meta-f:rgba(120,48,16,0.18);--meta-b:rgba(220,140,60,0.35);
+  --fuzzy:#3a1858;--fuzzy-l:#b080e0;--fuzzy-f:rgba(58,24,88,0.18);--fuzzy-b:rgba(140,80,220,0.3);
+}
+body{background:var(--bg);color:var(--w);font-family:'Noto Sans SC',sans-serif;font-size:14px;line-height:1.8;padding:0 24px 80px}
+.page{max-width:1000px;margin:0 auto}
+
+/* HERO */
+.hero{padding:56px 0 44px;border-bottom:0.5px solid var(--b2);margin-bottom:52px;text-align:center;position:relative}
+.hero::before{content:'';position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:500px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(200,160,60,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+.hero-title{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:300;letter-spacing:0.06em;color:var(--w);line-height:1.2;margin-bottom:8px}
+.hero-title span{color:var(--gl)}
+.hero-sub{font-size:14px;color:var(--w6);letter-spacing:0.06em}
+
+/* SECTION HEADER */
+.sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.sec-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:0.2em;min-width:24px}
+.sec-title{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:500;color:var(--w);letter-spacing:0.04em}
+.sec-line{flex:1;height:0.5px;background:var(--b2)}
+.section{margin-bottom:60px}
+
+/* META SKILL NODE */
+.meta-node{background:linear-gradient(135deg,var(--meta-f),rgba(0,0,0,0.2));border:1.5px solid var(--meta-b);border-radius:14px;padding:18px 24px;display:flex;align-items:center;gap:16px;margin-bottom:8px;position:relative}
+.meta-node::after{content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);width:1.5px;height:8px;background:var(--gold)}
+.meta-icon{font-size:28px}
+.meta-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.18em;color:var(--meta-l);margin-bottom:3px;text-transform:uppercase}
+.meta-name{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:500;color:var(--w)}
+.meta-desc{font-size:12px;color:var(--w6);margin-top:2px}
+
+/* SKILL CARDS */
+.skill-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:0}
+.skill-card{border-radius:12px;padding:18px 18px 16px;position:relative}
+.skill-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1.5px;height:14px;top:-14px}
+.sk-personal{background:linear-gradient(135deg,var(--personal-f),rgba(0,0,0,0.25));border:0.5px solid var(--personal-b)}
+.sk-personal::before{background:var(--personal-l)}
+.sk-family{background:linear-gradient(135deg,var(--family-f),rgba(0,0,0,0.25));border:0.5px solid var(--family-b)}
+.sk-family::before{background:var(--family-l)}
+.sk-child{background:linear-gradient(135deg,var(--child-f),rgba(0,0,0,0.25));border:0.5px solid var(--child-b)}
+.sk-child::before{background:var(--child-l)}
+.skill-icon{font-size:22px;margin-bottom:8px}
+.skill-name-en{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.15em;margin-bottom:5px;text-transform:uppercase}
+.sk-personal .skill-name-en{color:var(--personal-l)}
+.sk-family .skill-name-en{color:var(--family-l)}
+.sk-child .skill-name-en{color:var(--child-l)}
+.skill-name-zh{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:500;color:var(--w);margin-bottom:8px}
+.skill-desc{font-size:11.5px;color:var(--w6);line-height:1.7}
+.skill-steps{margin-top:10px;padding-top:10px;border-top:0.5px solid var(--b3)}
+.skill-step{font-family:'DM Mono',monospace;font-size:10px;color:var(--w4);margin-bottom:3px;display:flex;gap:6px}
+.skill-step-num{color:var(--gold);flex-shrink:0}
+
+/* CONNECTOR LINE */
+.connector{position:relative;height:14px;margin:0}
+.connector-line{position:absolute;top:0;left:50%;transform:translateX(-50%);width:1.5px;height:14px;background:var(--gold)}
+
+/* ARROW DOWN */
+.arrow-center{display:flex;justify-content:center;align-items:center;height:32px;color:var(--gold);font-size:18px;letter-spacing:0.1em}
+.arrow-fan{display:flex;justify-content:center;margin:8px 0 0}
+.arrow-fan svg{width:320px;height:40px}
+
+/* SCENARIO CARDS */
+.scenario{background:var(--card);border:0.5px solid var(--b3);border-radius:14px;overflow:hidden;margin-bottom:20px}
+.scenario-head{padding:16px 22px 12px;border-bottom:0.5px solid var(--b3);display:flex;align-items:center;gap:12px}
+.scenario-badge{font-family:'DM Mono',monospace;font-size:10px;padding:3px 12px;border-radius:20px;letter-spacing:0.1em;font-weight:500}
+.badge-single{background:var(--family-f);border:1px solid var(--family-b);color:var(--family-l)}
+.badge-multi{background:var(--personal-f);border:1px solid var(--personal-b);color:var(--personal-l)}
+.badge-fuzzy{background:var(--fuzzy-f);border:1px solid var(--fuzzy-b);color:var(--fuzzy-l)}
+.scenario-title{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:500;color:var(--w)}
+.scenario-body{padding:20px 22px 22px}
+
+/* FLOW DIAGRAM */
+.flow{display:flex;align-items:center;gap:0;flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}
+.flow-node{flex-shrink:0;border-radius:10px;padding:10px 16px;text-align:center;min-width:110px}
+.flow-node-label{font-size:9.5px;color:var(--w4);font-family:'DM Mono',monospace;letter-spacing:0.08em;margin-bottom:3px;text-transform:uppercase}
+.flow-node-main{font-family:'Noto Serif SC',serif;font-size:13px;font-weight:500;line-height:1.3}
+.flow-node-sub{font-size:10px;color:var(--w4);margin-top:2px}
+.fn-user{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.12)}
+.fn-user .flow-node-main{color:var(--w)}
+.fn-meta{background:var(--meta-f);border:0.5px solid var(--meta-b)}
+.fn-meta .flow-node-main{color:var(--meta-l)}
+.fn-personal{background:var(--personal-f);border:0.5px solid var(--personal-b)}
+.fn-personal .flow-node-main{color:var(--personal-l)}
+.fn-family{background:var(--family-f);border:0.5px solid var(--family-b)}
+.fn-family .flow-node-main{color:var(--family-l)}
+.fn-child{background:var(--child-f);border:0.5px solid var(--child-b)}
+.fn-child .flow-node-main{color:var(--child-l)}
+.fn-output{background:var(--gf);border:0.5px solid var(--b2)}
+.fn-output .flow-node-main{color:var(--gl)}
+.fn-question{background:var(--fuzzy-f);border:0.5px solid var(--fuzzy-b)}
+.fn-question .flow-node-main{color:var(--fuzzy-l)}
+.flow-arrow{flex-shrink:0;padding:0 8px;color:var(--gold);font-size:14px;display:flex;align-items:center}
+.flow-arrow-label{font-size:9px;color:var(--w4);text-align:center;line-height:1.3}
+.flow-branch{display:flex;flex-direction:column;gap:8px;padding:0 8px}
+.flow-branch-item{display:flex;align-items:center;gap:0}
+
+/* DATA REUSE TAG */
+.reuse-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;padding:2px 8px;border-radius:20px;background:var(--gf2);border:0.5px solid var(--b2);color:var(--gl);margin-left:8px;vertical-align:middle}
+
+/* TRIGGER TABLE */
+.trigger-table{width:100%;border-collapse:collapse;font-size:13px}
+.trigger-table th{text-align:left;padding:9px 14px;font-size:10px;letter-spacing:0.1em;color:var(--w4);background:var(--surf);border-bottom:0.5px solid var(--b2);font-weight:500}
+.trigger-table td{padding:11px 14px;border-bottom:0.5px solid var(--b3);vertical-align:top;color:var(--w8);line-height:1.6}
+.trigger-table tr:last-child td{border-bottom:none}
+.trigger-table td:first-child{color:var(--w6);font-style:italic}
+.trigger-wrap{background:var(--card);border:0.5px solid var(--b3);border-radius:12px;overflow:hidden;margin-top:12px}
+
+/* CALLOUT */
+.callout{border-left:2px solid var(--gold);padding:12px 16px;background:var(--gf);border-radius:0 8px 8px 0;font-size:13px;color:var(--w8);margin-top:16px;line-height:1.75}
+.callout strong{color:var(--gl)}
+
+/* OPTION PILLS */
+.option-row{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.option-pill{border-radius:10px;padding:10px 16px;flex:1;min-width:160px}
+.op-1{background:var(--personal-f);border:0.5px solid var(--personal-b)}
+.op-1 .op-title{color:var(--personal-l)}
+.op-2{background:var(--family-f);border:0.5px solid var(--family-b)}
+.op-2 .op-title{color:var(--family-l)}
+.op-3{background:var(--child-f);border:0.5px solid var(--child-b)}
+.op-3 .op-title{color:var(--child-l)}
+.op-num{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--w4);margin-bottom:3px}
+.op-title{font-weight:600;font-size:13px;margin-bottom:3px}
+.op-desc{font-size:11px;color:var(--w6)}
+
+/* SERIAL STEPS */
+.serial-steps{display:flex;flex-direction:column;gap:0}
+.serial-step{display:flex;gap:14px;align-items:flex-start;position:relative}
+.serial-step:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;bottom:0;width:1.5px;background:var(--b2)}
+.step-circle{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;flex-shrink:0;border:1.5px solid}
+.sc-1{background:var(--family-f);border-color:var(--family-b);color:var(--family-l)}
+.sc-2{background:var(--gf);border-color:var(--b2);color:var(--gl)}
+.sc-3{background:var(--child-f);border-color:var(--child-b);color:var(--child-l)}
+.step-content{padding:8px 0 20px}
+.step-title{font-weight:600;color:var(--w);margin-bottom:3px;font-size:13.5px}
+.step-desc{font-size:12.5px;color:var(--w6);line-height:1.7}
+
+/* ORNAMENT */
+.orn{display:flex;align-items:center;gap:10px;margin:32px 0}
+.orn-line{flex:1;height:0.5px;background:linear-gradient(90deg,transparent,var(--b2))}
+.orn-line.r{background:linear-gradient(90deg,var(--b2),transparent)}
+.orn-dia{color:var(--gold);font-size:7px;opacity:0.7}
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">LucaPath · Skill 路由架构</div>
+  <div class="hero-title">四个技能，<span>一个入口</span></div>
+  <div class="hero-sub">lucapath meta-skill 路由设计文档 · 2026</div>
+</div>
+
+<!-- SECTION 壹: 总览 -->
+<div class="section">
+  <div class="sec-hd">
+    <div class="sec-num">壹</div>
+    <div class="sec-title">Skill 层级总览</div>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- META NODE -->
+  <div class="meta-node">
+    <div class="meta-icon">🧭</div>
+    <div>
+      <div class="meta-label">Meta-Skill · 入口顾问</div>
+      <div class="meta-name">lucapath</div>
+      <div class="meta-desc">理解用户需求 → 判断报告类型 → 路由到对应专项 skill → 执行对应数据收集流程</div>
+    </div>
+  </div>
+
+  <div class="arrow-center">↓ 路由</div>
+
+  <!-- THREE SKILL CARDS -->
+  <div class="skill-row">
+
+    <div class="skill-card sk-personal">
+      <div class="skill-icon">🌙</div>
+      <div class="skill-name-en">personal-destiny-report</div>
+      <div class="skill-name-zh">个人四系统命理报告</div>
+      <div class="skill-desc">八字 × MBTI × 西方星盘 × 紫微斗数<br>职业 / 财运 / 感情 / 大运分析</div>
+      <div class="skill-steps">
+        <div class="skill-step"><span class="skill-step-num">1</span>基本信息</div>
+        <div class="skill-step"><span class="skill-step-num">2</span>性格与心理</div>
+        <div class="skill-step"><span class="skill-step-num">3</span>家庭信息</div>
+        <div class="skill-step"><span class="skill-step-num">4</span>职业现状</div>
+        <div class="skill-step"><span class="skill-step-num">5</span>关注重点</div>
+        <div class="skill-step"><span class="skill-step-num">6</span>确认生成</div>
+      </div>
+    </div>
+
+    <div class="skill-card sk-family">
+      <div class="skill-icon">🌿</div>
+      <div class="skill-name-en">family-report</div>
+      <div class="skill-name-zh">家族命理分析报告</div>
+      <div class="skill-desc">八字 × MBTI × 五行生生链<br>合盘指数 / 亲子教养 / 家庭生态</div>
+      <div class="skill-steps">
+        <div class="skill-step"><span class="skill-step-num">1</span>家庭人数 + 姓氏</div>
+        <div class="skill-step"><span class="skill-step-num">2</span>爸爸信息</div>
+        <div class="skill-step"><span class="skill-step-num">3</span>妈妈信息</div>
+        <div class="skill-step"><span class="skill-step-num">4</span>孩子逐一收集</div>
+        <div class="skill-step"><span class="skill-step-num">5</span>确认生成</div>
+      </div>
+    </div>
+
+    <div class="skill-card sk-child">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name-en">children-ai-report</div>
+      <div class="skill-name-zh">AI时代孩子发展报告</div>
+      <div class="skill-desc">八字 × MBTI × 星盘 × 兴趣爱好<br>AI互补矩阵 / 不可替代天赋规划</div>
+      <div class="skill-steps">
+        <div class="skill-step"><span class="skill-step-num">1</span>几个孩子？</div>
+        <div class="skill-step"><span class="skill-step-num">2</span>姓名生日性别</div>
+        <div class="skill-step"><span class="skill-step-num">3</span>出生地和时间</div>
+        <div class="skill-step"><span class="skill-step-num">4</span>MBTI 和性格</div>
+        <div class="skill-step"><span class="skill-step-num">5</span>兴趣爱好特长</div>
+        <div class="skill-step"><span class="skill-step-num">6</span>确认生成</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 贰: 三种场景 -->
+<div class="section">
+  <div class="sec-hd">
+    <div class="sec-num">贰</div>
+    <div class="sec-title">三种路由场景</div>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- SCENARIO A: 单独报告 -->
+  <div class="scenario">
+    <div class="scenario-head">
+      <span class="scenario-badge badge-single">场景一</span>
+      <div class="scenario-title">单独报告 — 直接路由</div>
+    </div>
+    <div class="scenario-body">
+      <div style="font-size:13px;color:var(--w6);margin-bottom:16px;">用户需求明确，直接识别类型并路由到对应 skill，无需追问。</div>
+
+      <!-- Flow A1: Personal -->
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--personal-l);letter-spacing:0.12em;margin-bottom:8px;">ROUTE A · 个人命理</div>
+        <div class="flow">
+          <div class="flow-node fn-user"><div class="flow-node-label">用户</div><div class="flow-node-main">"帮我分析我自己"</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-meta"><div class="flow-node-label">lucapath</div><div class="flow-node-main">识别：单人</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-personal"><div class="flow-node-label">路由</div><div class="flow-node-main">personal-destiny</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-personal"><div class="flow-node-label">收集</div><div class="flow-node-main">6步问答</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-output"><div class="flow-node-label">输出</div><div class="flow-node-main">个人命理 HTML</div></div>
+        </div>
+      </div>
+
+      <!-- Flow A2: Family -->
+      <div style="margin-bottom:14px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--family-l);letter-spacing:0.12em;margin-bottom:8px;">ROUTE B · 家族报告</div>
+        <div class="flow">
+          <div class="flow-node fn-user"><div class="flow-node-label">用户</div><div class="flow-node-main">"帮我们一家三口做分析"</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-meta"><div class="flow-node-label">lucapath</div><div class="flow-node-main">识别：多人家庭</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-family"><div class="flow-node-label">路由</div><div class="flow-node-main">family-report</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-family"><div class="flow-node-label">收集</div><div class="flow-node-main">5步问答</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-output"><div class="flow-node-label">输出</div><div class="flow-node-main">家族报告 HTML</div></div>
+        </div>
+      </div>
+
+      <!-- Flow A3: Children -->
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--child-l);letter-spacing:0.12em;margin-bottom:8px;">ROUTE C · 孩子AI报告</div>
+        <div class="flow">
+          <div class="flow-node fn-user"><div class="flow-node-label">用户</div><div class="flow-node-main">"孩子AI时代怎么培养"</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-meta"><div class="flow-node-label">lucapath</div><div class="flow-node-main">识别：孩子发展</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-child"><div class="flow-node-label">路由</div><div class="flow-node-main">children-ai</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-child"><div class="flow-node-label">收集</div><div class="flow-node-main">5步问答</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node fn-output"><div class="flow-node-label">输出</div><div class="flow-node-main">AI发展报告 HTML</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO B: 多报告串联 -->
+  <div class="scenario">
+    <div class="scenario-head">
+      <span class="scenario-badge badge-multi">场景二</span>
+      <div class="scenario-title">多报告串联 — 顺序生成 + 数据复用</div>
+    </div>
+    <div class="scenario-body">
+      <div style="font-size:13px;color:var(--w6);margin-bottom:20px;">用户同时需要多种报告时，按优先级顺序完成，已收集数据自动复用，不重复提问。</div>
+
+      <div class="serial-steps">
+        <div class="serial-step">
+          <div class="step-circle sc-1">①</div>
+          <div class="step-content">
+            <div class="step-title">识别多需求，确定顺序</div>
+            <div class="step-desc">用户说："帮我们全家做分析，重点是孩子的AI时代发展"<br>
+            lucapath 识别到两种需求：family-report（优先） + children-ai-report（次）</div>
+          </div>
+        </div>
+        <div class="serial-step">
+          <div class="step-circle sc-2">②</div>
+          <div class="step-content">
+            <div class="step-title">生成第一份报告：family-report</div>
+            <div class="step-desc">执行完整的 5 步数据收集 → 生成家族命理报告 HTML<br>
+            此过程中已收集：爸爸生辰、妈妈生辰、孩子姓名+生辰+MBTI</div>
+          </div>
+        </div>
+        <div class="serial-step">
+          <div class="step-circle sc-3">③</div>
+          <div class="step-content">
+            <div class="step-title">衔接第二份报告：children-ai-report <span class="reuse-tag">♻ 数据复用</span></div>
+            <div class="step-desc">系统提示继续下一份报告，并列出哪些信息已有：<br>
+            <span style="color:var(--family-l)">✓ 已有：</span> 孩子姓名、生辰、MBTI<br>
+            <span style="color:var(--child-l)">⊕ 补充：</span> 出生城市（Step 3）、兴趣爱好 + 特长（Step 5）<br>
+            跳过已知步骤，只问缺少的字段，节省用户时间。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:8px;">
+        <strong>数据复用原则：</strong>跨报告收集的数据在同一会话内保持有效。生成第二份报告时，lucapath 明确告知用户哪些信息已知、哪些需要补充，做到<strong>最少提问，最大效率</strong>。
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENARIO C: 模糊兜底 -->
+  <div class="scenario">
+    <div class="scenario-head">
+      <span class="scenario-badge badge-fuzzy">场景三</span>
+      <div class="scenario-title">模糊兜底 — 菜单引导 + 一次澄清</div>
+    </div>
+    <div class="scenario-body">
+      <div style="font-size:13px;color:var(--w6);margin-bottom:20px;">用户需求不明确时，lucapath 展示三选项菜单，最多追问一次，然后直接进入对应流程。</div>
+
+      <!-- Flow: fuzzy -->
+      <div class="flow" style="margin-bottom:20px;">
+        <div class="flow-node fn-user"><div class="flow-node-label">用户</div><div class="flow-node-main">"帮我做个分析"</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node fn-meta"><div class="flow-node-label">lucapath</div><div class="flow-node-main">无法判断类型</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node fn-question"><div class="flow-node-label">展示菜单</div><div class="flow-node-main">三选项</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node fn-meta"><div class="flow-node-label">用户选择</div><div class="flow-node-main">明确意图</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node fn-output"><div class="flow-node-label">路由</div><div class="flow-node-main">进入对应流程</div></div>
+      </div>
+
+      <!-- Menu options -->
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--fuzzy-l);letter-spacing:0.12em;margin-bottom:12px;">LUCAPATH 展示的选项菜单</div>
+      <div class="option-row">
+        <div class="option-pill op-1">
+          <div class="op-num">选项 ①</div>
+          <div class="op-title">个人命理报告</div>
+          <div class="op-desc">针对一个人，分析职业、财运、感情、人生大运</div>
+        </div>
+        <div class="option-pill op-2">
+          <div class="op-num">选项 ②</div>
+          <div class="op-title">家族命理报告</div>
+          <div class="op-desc">家庭成员之间的命盘关系、合盘、亲子教养</div>
+        </div>
+        <div class="option-pill op-3">
+          <div class="op-num">选项 ③</div>
+          <div class="op-title">AI时代孩子发展报告</div>
+          <div class="op-desc">孩子的天赋×命盘×兴趣，规划AI时代成长路径</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>兜底规则：</strong>lucapath 最多追问<strong>一次</strong>。用户回答后立即路由，不再反复确认类型。如用户选择多个选项，进入<strong>场景二（多报告串联）</strong>逻辑。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 叁: 触发词快查 -->
+<div class="section">
+  <div class="sec-hd">
+    <div class="sec-num">叁</div>
+    <div class="sec-title">路由触发词快查表</div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="trigger-wrap">
+    <table class="trigger-table">
+      <thead>
+        <tr>
+          <th>用户说</th>
+          <th>路由到</th>
+          <th>说明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>"帮我分析我自己" / "我的命理" / "我老公的命盘"</td>
+          <td style="color:var(--personal-l);font-weight:500;">personal-destiny-report</td>
+          <td>单人 + 成年人关键词</td>
+        </tr>
+        <tr>
+          <td>"我和老婆的合盘" / "我们两个人"</td>
+          <td style="color:var(--personal-l);font-weight:500;">personal-destiny-report × 2</td>
+          <td>两人合盘，依次生成两份个人报告</td>
+        </tr>
+        <tr>
+          <td>"我们全家" / "家庭分析" / "一家三口/四口"</td>
+          <td style="color:var(--family-l);font-weight:500;">family-report</td>
+          <td>多人家庭关键词</td>
+        </tr>
+        <tr>
+          <td>"亲子关系" / "父子/母女分析" / "教养建议"</td>
+          <td style="color:var(--family-l);font-weight:500;">family-report</td>
+          <td>亲子关系直接进家族报告</td>
+        </tr>
+        <tr>
+          <td>"我儿子/女儿" / "孩子的天赋" / "AI时代培养"</td>
+          <td style="color:var(--child-l);font-weight:500;">children-ai-report</td>
+          <td>孩子 + 发展/AI关键词</td>
+        </tr>
+        <tr>
+          <td>"全家分析 + 孩子AI发展"</td>
+          <td style="color:var(--gl);font-weight:500;">family-report → children-ai-report</td>
+          <td>多报告串联，数据复用</td>
+        </tr>
+        <tr>
+          <td>"帮我做个分析" / "我想了解命理" / 语意模糊</td>
+          <td style="color:var(--fuzzy-l);font-weight:500;">展示三选项菜单</td>
+          <td>模糊兜底，最多追问一次</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="orn"><div class="orn-line"></div><div class="orn-dia">◆</div><div class="orn-line r"></div></div>
+
+<div style="text-align:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--w2);padding-top:12px;">
+  LUCAPATH · SKILL ROUTING ARCHITECTURE · 2026 · 三才 SĀNCÁI
+</div>
+
+</div>
+</body>
+</html>

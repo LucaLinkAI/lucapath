@@ -1,0 +1,37 @@
+export type Role = 'user' | 'assistant';
+
+export type ToolChip = { name: string; summary: string };
+
+export type Message = {
+  id: string;
+  role: Role;
+  text: string;
+  tools?: ToolChip[];
+};
+
+export type Artifact = {
+  file: string;
+  url: string;
+  accent: string;
+};
+
+export type ChatSession = {
+  id: string; // server session id (set after first turn)
+  localId: string; // stable client id used before server id exists
+  title: string;
+  accent: string;
+  messages: Message[];
+  artifacts: Artifact[];
+  activeArtifact?: string; // file name
+};
+
+export type SSEEvent =
+  | { type: 'session'; sessionId: string }
+  | { type: 'start'; turnId: string }
+  | { type: 'token'; text: string }
+  | { type: 'tool'; name: string; summary: string }
+  | { type: 'artifact'; file: string; url: string; accent: string }
+  | { type: 'error'; message: string }
+  | { type: 'done'; turnId: string };
+
+export type AuthStatus = { ok: boolean; reason?: string; apiKeySource?: string };
