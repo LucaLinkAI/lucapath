@@ -96,7 +96,7 @@ Once the type is determined, announce it clearly and immediately begin the skill
 > 我们开始收集信息👇
 
 Then follow the **exact interactive data collection steps** defined in the target skill:
-- `personal-destiny-report` → 6步 (基本信息 → 性格 → 家庭 → 职业 → 关注重点 → 确认)
+- `personal-destiny-report` → 7步 (基本信息 → MBTI → 性格深度 → 家庭 → 职业 → 关注重点 → 确认)
 - `family-report` → 5步 (人数 → 爸爸 → 妈妈 → 孩子逐一 → 确认)
 - `children-ai-report` → 5步 (人数 → 姓名生日性别 → 出生地时间 → MBTI性格 → 兴趣特长 → 确认)
 - `business-partner-report` → 3步（2人）/ 4步（3人以上，增加团队架构与分工一步）

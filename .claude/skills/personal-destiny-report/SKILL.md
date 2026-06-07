@@ -40,19 +40,26 @@ Collect conversationally in this exact sequence. Ask one step at a time, wait fo
 
 ---
 
-### Step 2 — 性格与心理
+### Step 2 — MBTI 类型
 
-> **第二步：性格与心理**
+> **第二步：MBTI 类型**
 >
-> - **MBTI 类型**（例如：INFJ、ESTP……若未正式测过填"待测"）
+> - **你的 MBTI 类型是什么？**（例如：INFJ、ESTP、ENFP……若未正式测过填"待测"，我会根据后续性格描述辅助判断）
+
+---
+
+### Step 3 — 性格与心理
+
+> **第三步：性格深度**
+>
 > - **你认为自己最突出的性格特点是什么？**（可选，例如：内敛、直觉强、喜欢独处、天生领袖气质……）
 > - **你觉得自己最大的内在矛盾或困扰是什么？**（可选——这会让报告更有深度）
 
 ---
 
-### Step 3 — 家庭信息
+### Step 4 — 家庭信息
 
-> **第三步：家庭背景**
+> **第四步：家庭背景**
 >
 > - **婚姻状况**（未婚 / 已婚 / 离异 / 其他）
 > - **伴侣信息**（如有，可提供对方姓名、MBTI、出生年份，用于感情分析）
@@ -61,9 +68,9 @@ Collect conversationally in this exact sequence. Ask one step at a time, wait fo
 
 ---
 
-### Step 4 — 职业与规划
+### Step 5 — 职业与规划
 
-> **第四步：职业现状与发展方向**
+> **第五步：职业现状与发展方向**
 >
 > - **目前从事什么行业 / 职业？**
 > - **工作年限？目前在职场的阶段？**（例如：刚起步、管理层、转型期、创业……）
@@ -72,9 +79,9 @@ Collect conversationally in this exact sequence. Ask one step at a time, wait fo
 
 ---
 
-### Step 5 — 关注重点与特别问题
+### Step 6 — 关注重点与特别问题
 
-> **第五步：这份报告你最想聚焦在哪里？**
+> **第六步：这份报告你最想聚焦在哪里？**
 >
 > 请从以下方向中选择1–3个重点（或用自己的话描述）：
 >
@@ -89,7 +96,7 @@ Collect conversationally in this exact sequence. Ask one step at a time, wait fo
 
 ---
 
-### Step 6 — 确认生成
+### Step 7 — 确认生成
 
 Show a brief summary, then ask:
 

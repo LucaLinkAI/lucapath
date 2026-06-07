@@ -46,10 +46,10 @@ Ask:
 >
 > 请提供以下信息（可以一起发送）：
 > - 姓名（中文名 + 英文名/昵称，如有）
+> - **MBTI 类型**（例如 INFJ；未测过填"待测"）
 > - 出生日期：年/月/日（公历）
 > - 出生时间：几点？（0–23小时，或时辰名称，例如"申时"=15点）
 > - 出生地点：城市（用于星盘上升星座，可选）
-> - MBTI 类型（例如 INFJ）
 
 If father is absent from the family, skip to Step C (mother).
 
@@ -63,10 +63,10 @@ Ask:
 >
 > 请提供以下信息：
 > - 姓名（中文名 + 英文名/昵称，如有）
+> - **MBTI 类型**（例如 ENFP；未测过填"待测"）
 > - 出生日期：年/月/日（公历）
 > - 出生时间：几点？
 > - 出生地点（可选）
-> - MBTI 类型
 
 If mother is absent, skip to Step D.
 
@@ -80,9 +80,9 @@ For the first child, ask:
 >
 > 请提供：
 > - 姓名 + 性别（儿子/女儿）
+> - **MBTI 类型**（若孩子年龄较小未测，填"待测"即可）
 > - 出生日期：年/月/日（公历）
 > - 出生时间：几点？
-> - MBTI 类型（如果孩子年龄较小还没有测，可以先跳过或填"待测"）
 
 After receiving, if there are more children, repeat for each:
 
