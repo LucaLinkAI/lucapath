@@ -97,3 +97,9 @@ Output goes to `dist/`:
 - `lucapath-plugin/` — plugin directory (`.claude-plugin/plugin.json` + all skills) for Cowork import
 
 Always edit source files under `.claude/skills/`, then re-run `pack.py` to refresh `dist/`.
+
+## Report Output Directory
+
+All generated destiny reports (`.html` files) must be saved to **`studio/Report/`** by default.
+
+- When a skill generates a report, write it to `Report/<filename>.html` (relative to `studio/`).

@@ -818,6 +818,99 @@ Use these as exact structural templates. Replace ALL_CAPS placeholders with gene
 
 ---
 
+## Section 捌 — 未来身体健康状况
+
+```html
+<div class="section">
+  <div class="sec-hd">
+    <div class="sec-num">捌</div>
+    <div class="sec-title">未来身体健康状况</div>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- Overall health judgment callout -->
+  <div class="callout green" style="margin-bottom:20px;font-size:14px;line-height:1.9">
+    <strong>整体判断：</strong>你的健康底盘<strong style="color:var(--bazil)">CONSTITUTION_LABEL</strong>（CONSTITUTION_BASIS），不是体弱多病的命。但命盘有<strong style="color:var(--bazil)">IMBALANCE_ELEMENT_1过旺/不足（COUNT）</strong>而<strong style="color:var(--bazil)">IMBALANCE_ELEMENT_2（COUNT）</strong>——这是一种「IMBALANCE_DESCRIPTION」的体质特征。重点不是大病，而是「慢性、积累型」的调理课题。
+  </div>
+
+  <!-- Two health analysis cards -->
+  <div class="analysis-grid" style="margin-bottom:20px">
+
+    <!-- BaZi Five Elements card -->
+    <div class="analysis-card">
+      <div class="ac-hd" style="border-color:rgba(50,160,140,0.2)">
+        <div class="ac-dot" style="background:var(--bazil)"></div>
+        <div class="ac-title" style="color:var(--bazil)">八字五行 · 体质结构</div>
+      </div>
+      <div class="ac-body">
+        <!-- 4 items: each = one dominant or missing element → body system + tip -->
+        <div class="ac-item"><strong>ELEMENT_1旺主ORGAN_1</strong>——ELEMENT_1对应BODY_SYSTEM_1。ELEMENT_1过旺易现：SYMPTOM_1。养生第一要务是<strong>REMEDY_1</strong>。</div>
+        <div class="ac-item"><strong>ELEMENT_2全无主ORGAN_2</strong>——命中滴ELEMENT_2未现，需留意：BODY_SYSTEM_2、SYMPTOM_2。务必<strong>REMEDY_2</strong>。</div>
+        <div class="ac-item"><strong>ELEMENT_3偏DIRECTION</strong>——日支见ELEMENT_3，体质偏「QUALITY_3」，易SYMPTOM_3。宜REMEDY_3。</div>
+        <div class="ac-item"><strong>ELEMENT_4来ELEMENT_5是良药</strong>——用神FAVORABLE_ELEMENT对应BODY_SYSTEM_4，多接触REMEDY_4，能「疏通/补益」过EXTREME_ELEMENT，是命理层面的最佳保养。</div>
+      </div>
+    </div>
+
+    <!-- ZiWei 疾厄宫 card -->
+    <div class="analysis-card">
+      <div class="ac-hd" style="border-color:rgba(140,80,220,0.2)">
+        <div class="ac-dot" style="background:var(--zweil)"></div>
+        <div class="ac-title" style="color:var(--zweil)">紫微 · 疾厄宫（JIIE_BRANCH·JIIE_STAR）</div>
+      </div>
+      <div class="ac-body">
+        <!-- Item 1: main star archetype -->
+        <div class="ac-item"><strong>疾厄宫JIIE_STAR</strong>——JIIE_STAR主「STAR_KEYWORD」。健康风险偏「HEALTH_ARCHETYPE_TYPE」而非先天虚弱：HEALTH_ARCHETYPE_DETAIL。问题多在TRIGGER_PATTERN后集中爆发。</div>
+        <!-- Item 2: 四化 if any, or notable secondary star -->
+        <div class="ac-item"><strong>SECONDARY_STAR_OR_4HUA</strong>——留意：ORGAN_WARNING_1、ORGAN_WARNING_2、ORGAN_WARNING_3。LIFESTYLE_CONTEXT是主要诱因。</div>
+        <!-- Item 3: personality-body connection -->
+        <div class="ac-item"><strong>情绪躯体化</strong>——MBTI_TYPE + JIIE_STAR的「PERSONALITY_PATTERN」性格，容易把STRESS_TYPE压力憋在身体里，化为SOMATIC_SYMPTOMS。<strong>情绪疏导对你=直接的身体保养。</strong></div>
+        <!-- Item 4: good news -->
+        <div class="ac-item"><strong>好消息</strong>——POSITIVE_CHART_INDICATOR，你逢险有惊无险、恢复力强，只要不长期硬撑，大问题不易找上门。</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Age-period timeline (3 cards) -->
+  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--w4);margin-bottom:12px">健康运势 · 分龄重点</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+
+    <!-- Period 1: current / near-term -->
+    <div style="background:var(--card);border:0.5px solid rgba(50,160,140,0.25);border-radius:12px;padding:18px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--bazil);line-height:1;margin-bottom:8px">PERIOD_1_RANGE岁</div>
+      <div style="font-size:11px;color:var(--w4);margin-bottom:10px;font-family:'DM Mono',monospace">PERIOD_1_CONTEXT</div>
+      <div style="font-size:12.5px;color:var(--w8);line-height:1.7;margin-bottom:10px">PERIOD_1_RISK_1<br>PERIOD_1_RISK_2</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--bazil);padding:4px 8px;border:0.5px solid rgba(50,160,140,0.3);border-radius:20px;display:inline-block">PERIOD_1_ACTION_LABEL</div>
+    </div>
+
+    <!-- Period 2: upcoming transition -->
+    <div style="background:var(--card);border:0.5px solid rgba(200,144,32,0.25);border-radius:12px;padding:18px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--gl);line-height:1;margin-bottom:8px">PERIOD_2_RANGE岁</div>
+      <div style="font-size:11px;color:var(--w4);margin-bottom:10px;font-family:'DM Mono',monospace">PERIOD_2_CONTEXT</div>
+      <div style="font-size:12.5px;color:var(--w8);line-height:1.7;margin-bottom:10px">PERIOD_2_RISK_1<br>PERIOD_2_RISK_2</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--gl);padding:4px 8px;border:0.5px solid rgba(200,144,32,0.3);border-radius:20px;display:inline-block">PERIOD_2_ACTION_LABEL</div>
+    </div>
+
+    <!-- Period 3: future 大限 prognosis -->
+    <div style="background:var(--card);border:0.5px solid rgba(140,80,220,0.25);border-radius:12px;padding:18px;text-align:center">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--zweil);line-height:1;margin-bottom:8px">PERIOD_3_RANGE岁+</div>
+      <div style="font-size:11px;color:var(--w4);margin-bottom:10px;font-family:'DM Mono',monospace">PERIOD_3_CONTEXT</div>
+      <div style="font-size:12.5px;color:var(--w8);line-height:1.7;margin-bottom:10px">PERIOD_3_STAR_MEANING<br>PERIOD_3_PROGNOSIS</div>
+      <div style="font-size:10px;font-family:'DM Mono',monospace;color:var(--zweil);padding:4px 8px;border:0.5px solid rgba(140,80,220,0.3);border-radius:20px;display:inline-block">PERIOD_3_ACTION_LABEL</div>
+    </div>
+
+  </div>
+
+  <!-- Health action guide callout -->
+  <div class="callout green" style="font-size:13.5px;line-height:1.9">
+    <strong style="color:var(--bazil)">健康行动指南（三条核心）：</strong>①&nbsp;<strong>ACTION_KEYWORD_1</strong>——ACTION_DETAIL_1；②&nbsp;<strong>ACTION_KEYWORD_2</strong>——ACTION_DETAIL_2；③&nbsp;<strong>ACTION_KEYWORD_3</strong>——ACTION_DETAIL_3。你的底盘很好，健康对你而言是「管理」而非「治疗」——养得好，后半生反而是命中<strong>PROTECTIVE_STAR_OR_ELEMENT</strong>庇护的<strong>POSITIVE_HEALTH_OUTCOME</strong>。
+  </div>
+
+</div>
+```
+
+---
+
 ## Ornament + Final Insight + Footer
 
 ```html

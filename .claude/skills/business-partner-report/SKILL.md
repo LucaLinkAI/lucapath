@@ -20,10 +20,12 @@ Read these **as needed** during generation.
 
 **Always collect data conversationally in this exact sequence.** Wait for the user's answer at each step before proceeding.
 
-For 2 partners: 3 steps (skip 第三步).
-For 3+ partners: 4 steps (include 第三步).
+For 2 partners: 4 steps (skip 第四步 — 团队架构).
+For 3+ partners: 5 steps (include 第四步).
 
-If the user has already provided all data upfront, skip the conversation and go straight to the Workflow section.
+**第三步（职位分工）对所有团队规模都必做** — 每个人的职位是 role-division、互补矩阵、合作闭环等章节的核心依据，绝不能跳过。
+
+If the user has already provided every partner's **position/title** along with the rest of the data upfront (as in "Joyce 任 CEO、Jeff 任 CTO……"), skip the conversation and go straight to the Workflow section. If positions are missing, still run 第三步 to collect them before generating.
 
 ---
 
@@ -54,31 +56,79 @@ Based on the partner count from Step 1, generate a fill-in template with one blo
 > 出生日期：（公历 年/月/日）
 > 出生时间：（几点，或时辰，例如"申时"）
 > MBTI：（例如 ENTJ，不知道填"待测"）
-> 团队角色：（例如 CEO / 技术 / 市场 / 财务）
+> 职位/分工：（例如 CEO / CTO / 市场 / 财务，不确定可留空，下一步我帮你定）
 >
 > 【合伙人2】
 > 姓名：
 > 出生日期：
 > 出生时间：
 > MBTI：
-> 团队角色：
+> 职位/分工：
 >
 > （如有更多合伙人，继续添加【合伙人3】……）
 > ```
 >
 > 另外，可选填：**你们目前的发展阶段**（例如"刚起步"/"已有收入"/"准备融资"），有助于分析大运时机。
 
-Wait for the user to fill in and return the template. Accept partial data gracefully — if birth time or MBTI is missing for some partners, note it and proceed with what's available.
+Wait for the user to fill in and return the template. Accept partial data gracefully — if birth time or MBTI is missing for some partners, note it and proceed with what's available. **职位/分工可以留空**，下一步会专门确认。
 
 ---
 
-### 第三步 — 团队架构与分工（仅3人及以上）
+### 第三步 — 职位分工确认（所有团队必做）
+
+**This step runs for every team size (2–6 partners).** Each partner's position drives the 最优分工、互补矩阵、合作闭环、岗位推荐 sections — the report is far weaker without it.
+
+After receiving partner info, confirm each person's role. Ask:
+
+> **第三步：每个人在团队里担任什么职位？**
+>
+> 请确认一下分工（沿用上一步填的即可，也可以调整）👇
+>
+> ```
+> NAME_1 → 职位/分工：________（例如 CEO / 创始人 / 战略）
+> NAME_2 → 职位/分工：________（例如 CTO / 产品 / 技术）
+> NAME_3 → 职位/分工：________
+> ……
+> ```
+>
+> **可选 · 标准职位清单**（AI/科技创业常用，直接对号入座或自定义都行；也可一人身兼数职）：
+> | 标准职位 | 一句话职责 |
+> |---|---|
+> | **CEO / Founder** | 定战略方向、融资、最终拍板 |
+> | **CTO / AI Systems Architect** | AI 系统与产品技术架构、数据 |
+> | **Head of Product & Workflow Design** | 产品策略与流程/工作流设计 |
+> | **Head of Growth & Partnerships** | 增长、BD、对外渠道与合作 |
+> | **Head of Customer Success & Enablement** | 客户成功、续保留存、赋能 |
+> | **Head of Compliance & Business Operations** | 合规风控、后台运营、SOP |
+>
+> 几点说明：
+> - 一个人可以身兼数职（例如"Growth + Customer Success"），直接写全即可。
+> - 有**外部合作伙伴**（非全职合伙人）也请标注，例如"地产战略合作伙伴（外部）"。
+> - **不确定谁配哪个职位？** 告诉我"帮我定"，我会按命盘（日主格局 / 十神 / 神煞）+ MBTI 把上面这份清单**对人匹配**，你再拍板。
+
+Collect each partner's explicit **position/title** (内部职位 + 外部伙伴标注 + 兼职说明). The 标准职位清单 above is the recommended default menu — offer it, but accept any custom title.
+
+- If the user asks you to assign positions ("帮我定"), map each partner onto the **标准职位清单** using chart + MBTI archetype:
+  | 标准职位 | 最契合的命格 / MBTI 原型 |
+  |---|---|
+  | CEO / Founder | 七杀/正财官禄旺 · 魁罡 · 紫微/贪狼帝星 · NT (INTP/ENTP/ENTJ) — 定方向、破局、扛压 |
+  | CTO / AI Systems Architect | 正印+偏财 / 天机化权 · 文昌 · 内倾 N (INTJ/INFJ) — 研究驱动、系统架构 |
+  | Head of Product & Workflow Design | 食伤与印星均衡 · 华盖 · NTP/NFP — 产品策略与流程设计 |
+  | Head of Growth & Partnerships | 食伤旺/财星旺 · 将星/驿马 · 外倾 E (ENFJ/ENTP/ESTP) — BD、增长、对外拓展 |
+  | Head of Customer Success & Enablement | 厚土/官印相生 · 天乙/天同巨门 · ISFJ/ESFJ — 客户信任、续保、赋能 |
+  | Head of Compliance & Business Operations | 正官+建禄/七杀制旺 · 武曲天相 · J 强的 ISTJ/ISFJ — 合规、运营、SOP |
+  Give a provisional read if positions are asked before Step 1's BaZi calc, then refine after computing. Let the user confirm or adjust.
+- Record the final confirmed position per partner. This position label is what appears in the overview table, person cards, fortune table, complementarity matrix, and role-division recommendations throughout the report.
+
+---
+
+### 第四步 — 团队架构与分工（仅3人及以上）
 
 **Skip this step entirely for 2-partner teams.**
 
-After receiving partner info, ask:
+After confirming positions, ask:
 
-> **第三步：团队架构**（3人以上需要了解一下）
+> **第四步：团队架构**（3人以上需要了解一下）
 >
 > 请简单告诉我：
 >
@@ -90,16 +140,16 @@ Collect: decision structure + equity split + hierarchy clarity. Use this in the 
 
 ---
 
-### 第四步 — 确认生成
+### 第五步 — 确认生成
 
 Display a summary table and ask for confirmation:
 
 > 好的！整理一下收到的信息：
 >
-> | 合伙人 | 出生日期 | 时辰 | MBTI | 角色 |
-> |--------|----------|------|------|------|
-> | NAME_1 | YYYY/MM/DD | HH时 | TYPE | ROLE |
-> | NAME_2 | YYYY/MM/DD | HH时 | TYPE | ROLE |
+> | 合伙人 | 出生日期 | 时辰 | MBTI | 职位/分工 |
+> |--------|----------|------|------|-----------|
+> | NAME_1 | YYYY/MM/DD | HH时 | TYPE | POSITION |
+> | NAME_2 | YYYY/MM/DD | HH时 | TYPE | POSITION |
 >
 > **团队架构**（如有）：DECISION_STRUCTURE · EQUITY_SPLIT
 >
@@ -117,13 +167,20 @@ Wait for confirmation (or corrections) before proceeding to the Workflow section
 | **出生日期** | Year/Month/Day (solar/Gregorian 公历) |
 | **出生时辰** | Hour 0–23, or 时辰 (子=23, 丑=1, 寅=3, 卯=5, 辰=7, 巳=9, 午=11, 未=13, 申=15, 酉=17, 戌=19, 亥=21) |
 | **MBTI** | 4-letter type; "待测" if unknown |
-| **团队角色** | Their function/title in the business |
+| **职位/分工** | Their position/title in the business (CEO / CTO / COO / BD / 财务 …); may be multi-hat ("BD + 社群 + 销售") or external ("地产战略合作伙伴（外部）"). Collected/confirmed in 第三步; if user is unsure, recommend a best-fit role from chart + MBTI, then confirm. Drives every role-division section. |
 
 ---
 
 ## Workflow
 
-> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须按 `personal-destiny-report` 技能的 `references/astro-calculations.md` 中的公式现场推算。严禁直接沿用或继承对话记录中已出现的任何命盘结论——即使用户或上一轮已给出"结果"，也必须独立验算后才能使用。
+> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须现场推算。严禁直接沿用或继承对话记录、既有报告、或用户给出的任何命盘结论——即使生辰与某份既有报告一致，也必须独立重算后才能使用。
+>
+> ⚙️ **十神与神煞必须用脚本算，不要手算**：唯一计算源是项目根目录的 `scripts/bazi_shensha.py`（实现见 `personal-destiny-report/references/astro-calculations.md` 的「14项神煞速查公式」）。
+> - 先跑 `python3 scripts/bazi_shensha.py --selftest`（11 个已验证命盘回归测试，必须全过）。
+> - 再跑 `python3 scripts/bazi_shensha.py --grid "姓名,年柱 月柱 日柱 时柱" …`，得到全员**十神矩阵 + 神煞矩阵**。
+>
+> **🚫 只渲染、不手写**：报告里**表格和正文**的每一处十神/神煞断言，都必须能对应到上面 `--grid` 的输出格；禁止凭记忆手写"某人有/无某星"或某人神煞总数。本仓库历史上的神煞错误几乎全部源于"正文手写 + 继承旧报告"。
+> **🚫 一处冲突即全量重审**：只要脚本算出的某个值与既有/给定数据有一处冲突，立即视整批既有数据不可信、全部以脚本为准，绝不逐颗打补丁。
 >
 > **将星分类**：将星属于**命格类**，不属于凶煞类。在神煞全景对照表中，将星必须归入命格类区块（魁罡、将星、华盖、驿马、阴阳差错所在行），绝不出现在凶煞类区块。
 >
@@ -131,21 +188,18 @@ Wait for confirmation (or corrections) before proceeding to the Workflow section
 
 ### Step 1 — Calculate BaZi for Each Partner
 
-For each person, using the algorithm in the personal-destiny-report skill's `references/astro-calculations.md`:
-- Four pillars (year/month/day/hour) with stem, branch, element
-- Five Elements tally
-- Day Master 日主 (day stem)
-- 格局 Pattern + strength (strong/weak)
+For each person, derive the four pillars (year/month/day/hour) with stem, branch, element, using the algorithm in `personal-destiny-report/references/astro-calculations.md`. Then tally Five Elements, identify the Day Master 日主, and determine 格局 pattern + strength (strong/weak).
 
-**十神 (Ten Gods) — compute for all 7 non-Day-Master characters per partner**:
-For each of: year stem, year branch, month stem, month branch, day branch, hour stem, hour branch — compute the ten-god name relative to Day Master using the polarity + element-relationship rules in personal-destiny-report's `references/astro-calculations.md` → Ten Gods section. Record name + display color for the comparison table.
+**十神 + 神煞 — 用脚本算，不要手算**：
 
-**神煞 (Spirit Stars) — full four-category audit per partner** (using astro-calculations.md → Extended 神煞 section):
-- **命格类**: 魁罡, 将星, 华盖, 驿马, 阴阳差错
-- **贵人类**: 文昌, 天乙贵人, 国印贵人, 太极贵人
-- **人缘类**: 桃花
-- **凶煞类**: 羊刃, 孤辰/寡宿, 天罗地网, 劫煞/亡神
-Record: present/absent, count occurrences, which position for each person. Compute total star count per person.
+```bash
+python3 scripts/bazi_shensha.py --selftest                                   # 必须先全过
+python3 scripts/bazi_shensha.py --grid "PARTNER_A,年柱 月柱 日柱 时柱" "PARTNER_B,…" …   # 全员矩阵
+```
+
+The `--grid` output is the **single source of truth** for this report's 十神 and 神煞. Copy its 十神矩阵 (7 non-Day-Master positions per partner) and 神煞矩阵 (14 stars × 4 categories: 命格类 魁罡·将星·华盖·驿马·阴阳差错 / 贵人类 文昌·天乙贵人·国印贵人·太极贵人 / 人缘类 桃花 / 凶煞类 羊刃·孤辰/寡宿·天罗地网·劫煞/亡神) and the per-partner 综合星数 directly into your working notes. **Do not re-derive any star by hand.**
+
+> If a partner gave you a birth date, also run `python3 scripts/bazi_shensha.py "Name,四柱,YYYY-MM-DD"` so the script's **日柱 JDN 校验** confirms your day pillar before anything else is built on it.
 
 **Cross-partner 神煞 constellation analysis** (compute before writing HTML — these drive Section 贰's callout cards):
 - **将星分布**: Who has 将星 and in which position? Multiple partners with 将星 = leadership collision zone; needs domain split. Single 将星 = natural authority center.
@@ -246,6 +300,21 @@ Each partner gets a unique color from this palette based on Day Master element:
 | 火/rust | `--rust` (#8b3a1a) / `--rust-faint` (#faeee8) | Fire 火 Day Master |
 | 金/steel | `--steel` (#3a4a6b) / `--steel-faint` (#e8ecf5) | Metal 金 Day Master |
 | 阴/plum | `--plum` (#6b3a6b) / `--plum-faint` (#f0eaf8) | Secondary or neutral |
+
+### Step 6.5 — 多人测算验证环节 (Verification Gate — do NOT skip)
+
+Before writing any HTML, run this gate for the whole team. It exists because the most common failure mode is a single wrong 神煞 propagating into both the table and the prose.
+
+1. **回归测试通过**：`python3 scripts/bazi_shensha.py --selftest` 全部 PASS。
+2. **日柱校验**：每位提供了生辰的合伙人，脚本 `日柱 JDN 校验` 必须 OK；任何 MISMATCH 先停下来核对生辰/四柱，不要继续。
+3. **打印权威矩阵**：用 `--grid` 把全员 **十神矩阵 + 神煞矩阵 + 综合星数** 打印出来，作为本报告唯一依据。
+4. **交叉一致性自检**（基于矩阵，不是凭印象）：
+   - 将星 / 魁罡 / 华盖 / 驿马 各由谁持有、各几现？Section 贰 的跨伙伴卡片必须与此**逐字一致**。
+   - 每个"全队无 X / 唯一 X / X 双现"之类的论断，回到矩阵数一遍人头再写。
+   - 每位的"综合星数"在正文与表格里必须同一个数字。
+5. **冲突即重审**：若发现任何一处与你已写或既有数据冲突，按"一处冲突即全量重审"处理——以脚本矩阵为准重刷，绝不逐颗补丁。
+
+只有这五条全过，才进入 Step 7 渲染。渲染时，神煞/十神单元格与正文断言**逐一对照矩阵填写**。
 
 ### Step 7 — Generate the HTML
 

@@ -19,6 +19,29 @@ SKIP_DIRS  = {"__pycache__", "node_modules", "evals"}
 SKIP_FILES = {".DS_Store", "Thumbs.db"}
 SKIP_GLOBS = {"*.pyc", "*.pyo"}
 
+# Shared scripts (under repo-root scripts/) bundled into any skill whose docs
+# reference them, so each .skill archive / plugin is self-contained. The skill
+# docs reference them as `scripts/<name>` — which resolves to the bundled copy
+# when run from the skill root, and to the repo copy when run from repo root.
+SHARED_SCRIPTS = ["bazi_shensha.py"]
+
+
+def scripts_for_skill(skill_path: Path, root: Path) -> list[tuple[Path, str]]:
+    """Return [(src_path, arc_subpath)] of shared scripts this skill references."""
+    text = ""
+    for md in skill_path.rglob("*.md"):
+        try:
+            text += md.read_text(encoding="utf-8")
+        except OSError:
+            pass
+    out = []
+    for name in SHARED_SCRIPTS:
+        if name in text:
+            src = root / "scripts" / name
+            if src.exists():
+                out.append((src, f"scripts/{name}"))
+    return out
+
 
 def skip(path: Path) -> bool:
     if path.name in SKIP_FILES:
@@ -38,7 +61,7 @@ def find_skills(skills_dir: Path) -> list[Path]:
     )
 
 
-def make_skill_zip(skill_path: Path, out_dir: Path) -> Path:
+def make_skill_zip(skill_path: Path, out_dir: Path, root: Path) -> Path:
     out_file = out_dir / f"{skill_path.name}.skill"
     with zipfile.ZipFile(out_file, "w", zipfile.ZIP_DEFLATED) as zf:
         for f in skill_path.rglob("*"):
@@ -48,10 +71,12 @@ def make_skill_zip(skill_path: Path, out_dir: Path) -> Path:
             if skip(arc):
                 continue
             zf.write(f, arc)
+        for src, arc_sub in scripts_for_skill(skill_path, root):
+            zf.write(src, Path(skill_path.name) / arc_sub)
     return out_file
 
 
-def make_plugin_dir(skills: list[Path], plugin_name: str, out_dir: Path) -> Path:
+def make_plugin_dir(skills: list[Path], plugin_name: str, out_dir: Path, root: Path) -> Path:
     plugin_dir = out_dir / plugin_name
     if plugin_dir.exists():
         shutil.rmtree(plugin_dir)
@@ -61,18 +86,22 @@ def make_plugin_dir(skills: list[Path], plugin_name: str, out_dir: Path) -> Path
 
     skill_refs = []
     for skill in skills:
+        dest = skills_out / skill.name
         shutil.copytree(
             skill,
-            skills_out / skill.name,
+            dest,
             ignore=shutil.ignore_patterns(*SKIP_DIRS, *SKIP_FILES, "*.pyc"),
         )
+        for src, arc_sub in scripts_for_skill(skill, root):
+            (dest / arc_sub).parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dest / arc_sub)
         skill_refs.append(f"./skills/{skill.name}")
 
     meta_dir = plugin_dir / ".claude-plugin"
     meta_dir.mkdir()
     plugin_json = {
         "name": plugin_name,
-        "version": "1.0.3",
+        "version": "1.0.5",
         "description": (
             "路卡命运罗盘 — Chinese family destiny analysis: "
             "individual BaZi/MBTI/astrology reports, family compatibility, "
@@ -115,13 +144,13 @@ def main():
     if not args.no_zips:
         print("── .skill archives ──────────────────────")
         for skill in skills:
-            out_file = make_skill_zip(skill, out_dir)
+            out_file = make_skill_zip(skill, out_dir, root)
             kb = out_file.stat().st_size // 1024
             print(f"  {out_file.name:<40}  {kb} KB")
 
     if not args.no_plugin:
         print(f"\n── plugin dir: {args.plugin_name} ────────────────")
-        plugin_dir = make_plugin_dir(skills, args.plugin_name, out_dir)
+        plugin_dir = make_plugin_dir(skills, args.plugin_name, out_dir, root)
         for f in sorted(plugin_dir.rglob("*")):
             if f.is_file():
                 print(f"  {f.relative_to(out_dir)}")

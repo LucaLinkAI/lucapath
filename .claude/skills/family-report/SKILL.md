@@ -124,7 +124,13 @@ Wait for confirmation (or corrections) before proceeding to the Workflow section
 
 ## Workflow
 
-> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须按 `personal-destiny-report` 技能的 `references/astro-calculations.md` 中的公式现场推算。严禁直接沿用或继承对话记录中已出现的任何命盘结论——即使用户或上一轮已给出"结果"，也必须独立验算后才能使用。
+> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须现场推算。严禁直接沿用或继承对话记录、既有报告、或用户给出的任何命盘结论——即使生辰与某份既有报告一致，也必须独立重算后才能使用。
+>
+> ⚙️ **十神与神煞必须用脚本算，不要手算**：唯一计算源是项目根目录的 `scripts/bazi_shensha.py`（实现见 `personal-destiny-report/references/astro-calculations.md` 的「14项神煞速查公式」）。
+> - 先跑 `python3 scripts/bazi_shensha.py --selftest`（11 个已验证命盘回归测试，必须全过）。
+> - 再跑 `python3 scripts/bazi_shensha.py --grid "成员,年柱 月柱 日柱 时柱" …`，得到全家**十神矩阵 + 神煞矩阵 + 综合星数**；若提供了生辰，用 `"成员,四柱,YYYY-MM-DD"` 让脚本做**日柱 JDN 校验**。
+> - 🚫 **只渲染、不手写**：报告里**表格和正文**的每一处十神/神煞断言（含"谁有将星""全家几人华盖""某人神煞几项"），都必须对应 `--grid` 输出，禁止凭记忆手写。
+> - 🚫 **一处冲突即全量重审**：脚本算出的值与既有/给定数据有任一冲突，立即视整批既有数据不可信、全部以脚本为准，绝不逐颗打补丁。
 >
 > **将星分类**：将星属于**命格类**，不属于凶煞类。在神煞对照表中，将星必须归入命格类区块（魁罡、将星、华盖、驿马、阴阳差错所在行）。
 >
@@ -132,21 +138,16 @@ Wait for confirmation (or corrections) before proceeding to the Workflow section
 
 ### Step 1 — Calculate BaZi for Each Member
 
-For each person, using the algorithm in the personal-destiny-report skill's `references/astro-calculations.md`:
-- Four pillars (year/month/day/hour) with stem, branch, element
-- Five Elements tally
-- Day Master 日主 (day stem)
-- 格局 Pattern + strength (strong/weak)
+Derive each person's four pillars (year/month/day/hour) with stem, branch, element via the algorithm in `personal-destiny-report/references/astro-calculations.md`; then tally Five Elements, identify the Day Master 日主, and determine 格局 pattern + strength.
 
-**十神 (Ten Gods) — compute for all 7 non-Day-Master characters per member**:
-For each of: year stem, year branch, month stem, month branch, day branch, hour stem, hour branch — compute the ten-god name relative to Day Master using the polarity + element-relationship rules in personal-destiny-report's `references/astro-calculations.md` → Ten Gods section. Record name + display color for the comparison table.
+**十神 + 神煞 — 用脚本算，不要手算**：
 
-**神煞 (Spirit Stars) — full four-category audit per member** (using astro-calculations.md → Extended 神煞 section):
-- **命格类**: 魁罡, 将星, 华盖, 驿马, 阴阳差错
-- **贵人类**: 文昌, 天乙贵人, 国印贵人, 太极贵人
-- **人缘类**: 桃花
-- **凶煞类**: 羊刃, 孤辰/寡宿, 天罗地网, 劫煞/亡神
-Record: present/absent, count occurrences, which position for each member. Compute total star count per member.
+```bash
+python3 scripts/bazi_shensha.py --selftest                              # 必须先全过
+python3 scripts/bazi_shensha.py --grid "爸爸,四柱" "妈妈,四柱" "孩子,四柱" …   # 全家矩阵
+```
+
+The `--grid` output is the **single source of truth** for this report's 十神 and 神煞. Copy its 十神矩阵 (7 non-Day-Master positions/member), 神煞矩阵 (14 stars × 4 categories: 命格类 魁罡·将星·华盖·驿马·阴阳差错 / 贵人类 文昌·天乙贵人·国印贵人·太极贵人 / 人缘类 桃花 / 凶煞类 羊刃·孤辰/寡宿·天罗地网·劫煞/亡神) and each member's 综合星数 into your working notes. **Do not re-derive any star by hand**, and before writing HTML re-check every "谁有将星 / 全家几人华盖 / 某人几项神煞" claim against the matrix.
 
 **Cross-member 神煞 constellation analysis** (compute before writing HTML — drives the callout cards in Section 贰's dynamics block):
 - **将星分布**: Who has 将星? Parent with 将星 = natural family authority figure. Child with 将星 = needs domain ownership, will push back on total control. Two family members with 将星 in the same generation = authority tension requiring deliberate division of domains.

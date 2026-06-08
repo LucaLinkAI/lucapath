@@ -107,7 +107,9 @@ Wait for confirmation (or corrections) before proceeding to the Workflow.
 
 ## Workflow
 
-> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须按 `personal-destiny-report` 技能的 `references/astro-calculations.md` 中的公式现场推算。严禁直接沿用或继承对话记录中已出现的任何命盘结论——即使用户或上一轮已给出"结果"，也必须独立验算后才能使用。
+> **命盘计算完整性规则**：所有命盘数据（四柱、五行、十神、神煞）必须现场推算。严禁直接沿用或继承对话记录、既有报告、或用户给出的任何命盘结论——即使生辰与某份既有报告一致，也必须独立重算后才能使用。
+>
+> ⚙️ **十神与神煞必须用脚本算，不要手算**：唯一计算源是项目根目录的 `scripts/bazi_shensha.py`（实现见 `personal-destiny-report/references/astro-calculations.md` 的「14项神煞速查公式」）。先跑 `python3 scripts/bazi_shensha.py --selftest`（必须全过），再跑 `python3 scripts/bazi_shensha.py "孩子,年柱 月柱 日柱 时柱,YYYY-MM-DD"`（多个孩子用 `--grid`）得到十神+神煞+日柱JDN校验。🚫 **只渲染、不手写**：报告里每一处神煞/十神断言都必须对应脚本输出，禁止凭记忆手写。🚫 **一处冲突即全量重审**，绝不逐颗打补丁。
 >
 > **将星分类**：将星属于**命格类**，不属于凶煞类。生成任何神煞表格时，将星必须与魁罡、华盖、驿马、阴阳差错同属命格类区块，禁止放入凶煞类。
 >
@@ -115,11 +117,16 @@ Wait for confirmation (or corrections) before proceeding to the Workflow.
 
 ### Step 1 — Calculate BaZi
 
-Using the algorithm in `personal-destiny-report` skill's `references/astro-calculations.md`:
-- Four pillars (年/月/日/时) + elements
-- Five Elements tally
-- Day Master (日主) + 格局 pattern + strength
-- Key 神煞: 七杀/三重七杀, 天乙贵人, 驿马, 华盖, 文昌 (or 文昌空亡), 将星, 国印贵人, 阴阳差错
+Derive the four pillars (年/月/日/时) + elements via the algorithm in `personal-destiny-report/references/astro-calculations.md`; tally Five Elements; identify the Day Master (日主) + 格局 pattern + strength.
+
+**十神 + 神煞 — 用脚本算，不要手算**：
+
+```bash
+python3 scripts/bazi_shensha.py --selftest                          # 必须先全过
+python3 scripts/bazi_shensha.py "孩子,年柱 月柱 日柱 时柱,YYYY-MM-DD"   # 单孩(多孩用 --grid)
+```
+
+The script output is the **single source of truth** for 十神 and all 14 神煞 (命格类 魁罡·将星·华盖·驿马·阴阳差错 / 贵人类 文昌·天乙贵人·国印贵人·太极贵人 / 人缘类 桃花 / 凶煞类 羊刃·孤辰/寡宿·天罗地网·劫煞/亡神). Read the relevant stars (especially 七杀格局, 天乙贵人, 驿马, 华盖, 文昌, 将星, 太极贵人, 阴阳差错) from it; **do not re-derive any star by hand**.
 
 ### Step 2 — Western Astrology
 

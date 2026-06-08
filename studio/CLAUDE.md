@@ -102,6 +102,7 @@ resets on server restart (generated HTML files persist under `output/`).
   switching is variable-only. Per-report accent vars: `--personal/--family/--child/
   --business/--multi/--meta`.
 
+
 ## Conventions
 
 - **No API key** — auth is the machine's Claude Code subscription. Don't add key-based auth.

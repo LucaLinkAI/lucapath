@@ -183,10 +183,10 @@ Read `references/design-system.md` for the complete CSS block.
 Read `references/html-sections.md` for section-by-section HTML skeletons.
 
 **Output filename**: `{Chinese name} · 四系统命理综合分析报告.html`  
-Save it in the current project directory or working directory.
+Save to the `Report/` subdirectory of the current working directory (create it with `mkdir -p` if absent).
 
 **Report sections** (in order):
-壹 Overview → 贰 Career → 叁 Wealth → 肆 Relationships → 伍 Life Cycles → **陆 命盘骨架·十神·神煞** → 柒 Comparison Table → Final Insight → Footer
+壹 Overview → 贰 Career → 叁 Wealth → 肆 Relationships → 伍 Life Cycles → **陆 命盘骨架·十神·神煞** → 柒 Comparison Table → **捌 未来身体健康状况** → Final Insight → Footer
 
 **Section 壹 (四套命理系统总览)** — the 八字 sys-card's info block (格局/神煞 area) now has three lines — fill them as follows:
 - **格局 line**: `格局：PATTERN_NAME · STRENGTH · 喜/用FAVORABLE_ELEMENT` — STRENGTH is 身强/身弱/偏弱/极弱 in plain text
@@ -212,6 +212,30 @@ Save it in the current project directory or working directory.
 - Total count row showing all 14 星 items tallied
 - Per-category breakdown cards (4 cards: 命格类, 贵人类, 人缘类, 凶煞类)
 - Closing callout synthesizing the ten-god pattern + most notable 神煞 into career/talent insight
+
+**Section 捌 (未来身体健康状况)** — derive all content from already-computed BaZi and ZiWei data:
+
+*Overall health callout* — 2–3 sentences assessing constitutional strength from Day Master element + five-element imbalance. Name 1–2 key risk patterns (e.g., "土过旺而水全无"). Frame as long-term management, not doom.
+
+*BaZi card (八字五行·体质结构)* — 4 `ac-item`s, each mapping a dominant or missing element to a body system with a concrete lifestyle tip:
+- 木 (过/不足) → 肝胆/筋腱/神经/视力
+- 火 (过/不足) → 心脏/血液循环/眼/小肠
+- 土 (过/不足) → 脾胃/消化/肌肉/思虑过重
+- 金 (过/不足) → 肺/大肠/皮肤/呼吸
+- 水 (过/不足) → 肾/膀胱/骨髓/内分泌
+Focus on the top 2 imbalances (most extreme count gap). Always end the card with a positive framing about the Day Master's constitutional resilience.
+
+*ZiWei card (紫微·疾厄宫)* — 4 `ac-item`s covering: (1) 疾厄宫 main star and its primary health archetype; (2) 四化 on that star if any; (3) personality→body connection (e.g., MBTI + star = stress pattern); (4) a "好消息" item noting what protects health in this chart.
+
+Key 疾厄宫 star→health archetypes:
+紫微→慢性调理型 | 天机→神经/思虑型 | 太阳→心血管/头部 | 武曲→肺骨/手术运 | 天同→消化/过逸 | 廉贞→情绪致病/血液 | 天府→脾胃/过劳 | 太阴→肾/内分泌/情绪 | 贪狼→肝代谢/好酒 | 巨门→压力性消化 | 天相→皮肤/水分代谢 | 天梁→寿星逢医得救 | 七杀→骨关节/急性意外 | 破军→手术变化体质 | 空宫→先天无大碍
+
+*Age-period timeline* — 3 cards based on current age ± 10 years and the upcoming ZiWei 大限 palaces:
+- Card 1 (current period, ~current age ±5): green accent — present stressors and top 1–2 health risks NOW
+- Card 2 (next decade, upcoming 大限): amber/crimson accent — metabolic/hormonal transitions expected, build habits NOW
+- Card 3 (far future 大限): purple accent — reference the ZiWei star in that 大限 palace for long-term prognosis (天梁 = longevity star; 七杀 = be careful of overwork; etc.)
+
+*Health action guide callout* — exactly 3 numbered points, each with a bold keyword lead. Points must be specific to THIS person's element imbalance + ZiWei star, not generic wellness advice. End with one empowering sentence: "你的底盘很好，健康对你而言是「管理」而非「治疗」——养得好，后半生反而是命中[RELEVANT_STAR]庇护的[POSITIVE_OUTCOME]。"
 
 **Accent color** — choose or use user preference:
 - **Gold** (default): `:root` uses `--gold:#c8a03c`, background `--bg:#07101e` (dark navy) — see template 林均元
