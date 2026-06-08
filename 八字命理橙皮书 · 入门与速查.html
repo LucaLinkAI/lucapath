@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<!-- saved from url=(0105)file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>八字命理橙皮书 · 入门与速查</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./八字命理橙皮书 · 入门与速查_files/css2" rel="stylesheet">
+<style>
+/* ─── 变量 ─── */
+:root {
+  --bg:        #faf8f5;
+  --white:     #ffffff;
+  --orange:    #f97316;
+  --orange-d:  #c2410c;
+  --orange-l:  #fff7ed;
+  --orange-m:  #ffedd5;
+  --text:      #292524;
+  --text-2:    #78716c;
+  --text-3:    #a8a29e;
+  --border:    #e7e5e4;
+  --border-2:  #d6d3d1;
+  --green-l:   #f0fdf4;
+  --green:     #16a34a;
+  --blue-l:    #eff6ff;
+  --blue:      #2563eb;
+  --yellow-l:  #fefce8;
+  --yellow:    #ca8a04;
+  --sb-w:      264px;
+  --top-h:     56px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SIDEBAR ─── */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sb-w);
+  height: 100vh;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 200;
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+#sidebar::-webkit-scrollbar { width: 3px; }
+#sidebar::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 2px; }
+
+.sb-brand {
+  padding: 28px 24px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.sb-brand .series {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.sb-brand h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.sb-brand .tagline {
+  font-size: 11px;
+  color: var(--text-3);
+  line-height: 1.5;
+}
+
+.sb-nav { padding: 16px 0 24px; flex: 1; }
+
+.nav-group-label {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 12px 24px 5px;
+  font-weight: 500;
+}
+
+.nav-link {
+  display: block;
+  padding: 8px 24px;
+  color: var(--text-2);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  transition: all 0.15s;
+  border-left: 2px solid transparent;
+  line-height: 1.45;
+}
+.nav-link:hover { color: var(--orange); background: var(--orange-l); }
+.nav-link.active {
+  color: var(--orange);
+  border-left-color: var(--orange);
+  background: var(--orange-l);
+  font-weight: 500;
+}
+.nav-link .ch-no {
+  display: block;
+  font-size: 9px;
+  color: var(--text-3);
+  margin-bottom: 1px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+}
+.nav-link.active .ch-no { color: var(--orange); opacity: 0.7; }
+
+.sb-foot {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  font-size: 10.5px;
+  color: var(--text-3);
+  line-height: 1.6;
+  flex-shrink: 0;
+}
+.sb-foot strong { color: var(--text-2); font-weight: 500; }
+
+/* ─── TOP BAR (mobile) ─── */
+#topbar {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--top-h);
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  z-index: 190;
+  align-items: center;
+  padding: 0 18px;
+  gap: 14px;
+}
+#menu-btn {
+  width: 40px; height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+#menu-btn span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+#topbar h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* ─── OVERLAY ─── */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 180;
+  backdrop-filter: blur(2px);
+}
+#overlay.show { display: block; }
+
+/* ─── MAIN ─── */
+#main {
+  margin-left: var(--sb-w);
+  min-height: 100vh;
+}
+
+/* ─── COVER ─── */
+#cover {
+  background: var(--white);
+  padding: 80px 64px 72px;
+  border-bottom: 1px solid var(--border);
+  max-width: 800px;
+}
+.cover-series {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 500;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cover-series::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--orange);
+}
+.cover-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 900;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+}
+.cover-title .orange { color: var(--orange); }
+.cover-sub {
+  font-size: 15px;
+  color: var(--text-2);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.cover-desc {
+  font-size: 14.5px;
+  color: var(--text-2);
+  line-height: 1.9;
+  max-width: 560px;
+  margin-bottom: 48px;
+  padding-left: 20px;
+  border-left: 3px solid var(--orange);
+}
+.cover-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  max-width: 480px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--border);
+}
+.cs-item {
+  background: var(--white);
+  padding: 18px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.cs-score {
+  background: var(--orange-l);
+  border-top: 1px solid #fed7aa;
+}
+.cs-total {
+  background: var(--orange-m);
+}
+.cs-item { }
+.cs-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+  display: block;
+}
+.cs-zh {
+  font-size: 22px;
+  letter-spacing: 0.04em;
+}
+.cs-lbl {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 5px;
+}
+.cover-formula {
+  margin-top: 44px;
+  padding: 20px 24px;
+  background: var(--orange-l);
+  border: 1px solid var(--orange-m);
+  border-radius: 8px;
+  max-width: 640px;
+}
+.cover-formula .f-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-d);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.cover-formula .f-body {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.7;
+}
+.cover-formula .f-body strong { color: var(--orange-d); }
+
+/* ─── CHAPTER WRAPPER ─── */
+.chapter {
+  max-width: 800px;
+  padding: 72px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── CHAPTER HEADER ─── */
+.ch-meta {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ch-meta::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: var(--orange);
+}
+.ch-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+.ch-hook {
+  font-size: 14px;
+  color: var(--text-2);
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── SECTION HEADINGS ─── */
+h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 40px 0 14px;
+}
+h4 {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 22px 0 8px;
+  letter-spacing: 0.01em;
+}
+p { margin-bottom: 14px; color: var(--text-2); font-size: 14.5px; }
+strong { color: var(--text); font-weight: 600; }
+
+/* ─── DIVIDER ─── */
+.sect-div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 40px 0;
+  color: var(--text-3);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sect-div::before, .sect-div::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── DEFINITION BOX ─── */
+.def-box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 18px 0 24px;
+}
+.def-box-header {
+  background: var(--orange);
+  padding: 10px 18px;
+  font-size: 11px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.def-box-body {
+  padding: 18px;
+  background: var(--white);
+}
+.def-box-body p {
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 0;
+  line-height: 1.75;
+}
+
+/* ─── CALLOUT ─── */
+.callout {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0 22px;
+  font-size: 14px;
+  line-height: 1.75;
+  border: 1px solid;
+}
+.callout-label {
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.cal-o { background: var(--orange-l); border-color: #fed7aa; }
+.cal-o .callout-label { color: var(--orange-d); }
+.cal-g { background: var(--green-l); border-color: #bbf7d0; }
+.cal-g .callout-label { color: var(--green); }
+.cal-b { background: var(--blue-l); border-color: #bfdbfe; }
+.cal-b .callout-label { color: var(--blue); }
+.cal-y { background: var(--yellow-l); border-color: #fef08a; }
+.cal-y .callout-label { color: var(--yellow); }
+
+/* ─── FORMULA BOX ─── */
+.formula {
+  background: var(--orange-l);
+  border: 1px solid #fed7aa;
+  border-left: 4px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0 24px;
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.75;
+}
+.formula .f-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange-d);
+  margin-bottom: 8px;
+}
+
+/* ─── TABLES ─── */
+.tbl-wrap {
+  overflow-x: auto;
+  margin: 14px 0 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 360px;
+  background: var(--white);
+}
+thead { background: var(--orange-l); }
+thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--orange-d);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-bottom: 1px solid #fed7aa;
+}
+tbody tr { border-bottom: 1px solid var(--border); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: #fafaf9; }
+tbody tr:hover { background: var(--orange-l); }
+tbody td {
+  padding: 9px 14px;
+  color: var(--text-2);
+  vertical-align: top;
+  line-height: 1.55;
+  font-size: 13px;
+}
+tbody td:first-child {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+td .sub { font-size: 11px; color: var(--text-3); display: block; margin-top: 2px; }
+
+/* ─── BADGE ─── */
+.badge {
+  display: inline-block;
+  padding: 1.5px 8px;
+  border-radius: 20px;
+  font-size: 10.5px;
+  font-weight: 600;
+  margin: 1px;
+}
+.b-o { background: #ffedd5; color: var(--orange-d); }
+.b-g { background: #dcfce7; color: #15803d; }
+.b-r { background: #fee2e2; color: #b91c1c; }
+.b-b { background: #dbeafe; color: #1d4ed8; }
+.b-p { background: #ede9fe; color: #7c3aed; }
+.b-y { background: #fef9c3; color: #854d0e; }
+
+/* ─── CARD GRID ─── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 14px 0 22px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card:hover { border-color: #fed7aa; box-shadow: 0 2px 8px rgba(249,115,22,0.08); }
+.card-icon { font-size: 22px; margin-bottom: 8px; }
+.card-title { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.card-body { font-size: 12.5px; color: var(--text-2); line-height: 1.55; }
+
+/* ─── WUXING GRID ─── */
+.wx-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 14px 0 24px;
+}
+.wx-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 8px;
+  text-align: center;
+  transition: transform 0.12s;
+}
+.wx-card:hover { transform: translateY(-2px); }
+.wx-ico { font-size: 22px; margin-bottom: 5px; }
+.wx-nm { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; margin-bottom: 3px; }
+.wx-en { font-size: 9px; color: var(--text-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+.wx-p { font-size: 10px; color: var(--green); margin-bottom: 2px; }
+.wx-n { font-size: 10px; color: #ef4444; }
+
+/* ─── SCORE BARS ─── */
+.score-bars {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin: 14px 0 24px;
+}
+.sc-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.sc-row:last-child { margin-bottom: 0; }
+.sc-lbl { font-size: 12.5px; color: var(--text-2); min-width: 140px; }
+.sc-bar { flex: 1; height: 8px; background: #f5f5f4; border-radius: 4px; overflow: hidden; }
+.sc-fill { height: 100%; background: linear-gradient(90deg, var(--orange), #fb923c); border-radius: 4px; }
+.sc-val { font-size: 12px; color: var(--orange-d); font-weight: 600; min-width: 40px; text-align: right; }
+
+/* ─── SCORE OVERVIEW ─── */
+.score-ov {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 14px 0 24px;
+}
+.sc-box {
+  background: var(--white);
+  padding: 24px 16px;
+  text-align: center;
+}
+.sc-box .big { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 700; color: var(--orange); display: block; line-height: 1; }
+.sc-box .nm { font-size: 13px; color: var(--text-2); margin: 8px 0 3px; }
+.sc-box .sm { font-size: 10px; color: var(--text-3); }
+
+/* ─── ACCORDION (optional) ─── */
+.qa-list { margin: 14px 0 24px; }
+.qa-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: var(--white);
+  overflow: hidden;
+}
+.qa-q {
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  user-select: none;
+}
+.qa-q:hover { background: var(--orange-l); }
+.qa-q::after { content: '+'; color: var(--orange); font-size: 18px; flex-shrink: 0; transition: transform 0.2s; }
+.qa-item.open .qa-q::after { transform: rotate(45deg); }
+.qa-a {
+  display: none;
+  padding: 0 18px 16px;
+  font-size: 13.5px;
+  color: var(--text-2);
+  line-height: 1.75;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.qa-item.open .qa-a { display: block; }
+
+/* ─── READING PROGRESS ─── */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--orange);
+  z-index: 300;
+  transition: width 0.1s;
+}
+
+/* ─── BACK TO TOP ─── */
+#back-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: var(--orange);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(249,115,22,0.35);
+  z-index: 170;
+  transition: transform 0.15s;
+}
+#back-top:hover { transform: scale(1.08); }
+#back-top.show { display: flex; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.12); }
+  #topbar { display: flex; }
+  #main { margin-left: 0; padding-top: var(--top-h); }
+  #cover, .chapter { padding: 40px 22px; }
+  .wx-grid { grid-template-columns: repeat(3, 1fr); }
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .score-ov { grid-template-columns: 1fr; }
+  .cover-stats { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
+}
+@media (max-width: 480px) {
+  #cover, .chapter { padding: 32px 16px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .wx-grid { grid-template-columns: repeat(2, 1fr); }
+  .cover-title { font-size: 32px; }
+  h3 { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar" style="width: 0%;"></div>
+
+<!-- ─── OVERLAY ─── -->
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<!-- ─── SIDEBAR ─── -->
+<nav id="sidebar">
+  <div class="sb-brand">
+    <div class="series">🍊 橙皮书 · Orange Book</div>
+    <h1>八字命理<br>入门与速查</h1>
+    <p class="tagline">定义 · 解读 · 案例 · 速查表</p>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-group-label">目录</div>
+    <a class="nav-link active" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#cover"><span class="ch-no">封面</span>总览与公式</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch1"><span class="ch-no">第一章</span>八字是什么？</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch2"><span class="ch-no">第二章</span>四柱 · 天干 · 地支</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch3"><span class="ch-no">第三章</span>日主：命盘的主角</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch4"><span class="ch-no">第四章</span>五行：能量的五种形态</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch5"><span class="ch-no">第五章</span>日主强弱</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch6"><span class="ch-no">第六章</span>十神：关系与角色</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch7"><span class="ch-no">第七章</span>格局：人生的主旋律</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch8"><span class="ch-no">第八章</span>神煞：特殊标签</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch9"><span class="ch-no">第九章</span>大运与流年</a>
+    <a class="nav-link" href="file:///Users/junyuanlin/Downloads/%E5%85%AB%E5%AD%97%E5%91%BD%E7%90%86%E6%A9%99%E7%9A%AE%E4%B9%A6_2.html#ch10"><span class="ch-no">第十章</span>综合评分体系</a>
+  </div>
+  <div class="sb-foot">
+    <strong>综合评分公式</strong><br>
+    命盘结构 70 + MBTI 适配 20 + 年龄环境 10 = <strong>100</strong>
+  </div>
+</nav>
+
+<!-- ─── TOP BAR (mobile) ─── -->
+<header id="topbar">
+  <button id="menu-btn" onclick="toggleSidebar()" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+  <h2>🍊 八字橙皮书</h2>
+</header>
+
+<!-- ─── BACK TO TOP ─── -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:&#39;smooth&#39;})" aria-label="回到顶部">↑</button>
+
+<!-- ════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── COVER ─── -->
+<section id="cover">
+  <div class="cover-series">橙皮书 · 第一卷</div>
+  <h1 class="cover-title">八字命理<br><span class="orange">橙皮书</span></h1>
+  <p class="cover-sub">入门读物 · 速查手册 · 定义与案例全收录</p>
+  <p class="cover-desc">
+    这不是一本「测命好坏」的书。<br>
+    八字是一套读懂人的框架——帮你看清自己或他人的天赋结构、性格底色、适合的方向，以及什么时候最容易突破。<br>
+    本书适合从零开始的新手，也可以作为随时查阅的参考字典。
+  </p>
+  <div class="cover-stats">
+    <div class="cs-item"><span class="cs-num cs-zh">肆</span><div class="cs-lbl">柱</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">捌</span><div class="cs-lbl">字</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">伍</span><div class="cs-lbl">行</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">拾</span><div class="cs-lbl">天干</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">拾貳</span><div class="cs-lbl">地支</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">拾</span><div class="cs-lbl">神</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">捌</span><div class="cs-lbl">格局</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">廿一</span><div class="cs-lbl">神煞</div></div>
+    <div class="cs-item"><span class="cs-num cs-zh">拾陸</span><div class="cs-lbl">MBTI</div></div>
+    <div class="cs-item cs-score"><span class="cs-num cs-zh">柒拾</span><div class="cs-lbl">命盤底層天賦分</div></div>
+    <div class="cs-item cs-score"><span class="cs-num cs-zh">參拾</span><div class="cs-lbl">性格適配和潛力環境修正分</div></div>
+    <div class="cs-item cs-score cs-total"><span class="cs-num cs-zh">壹佰</span><div class="cs-lbl">綜合評分滿分</div></div>
+  </div>
+  <div class="cover-formula">
+    <div class="f-label">📌 核心分析顺序（请记住这条主线）</div>
+    <div class="f-body">
+      <strong>四柱</strong> → <strong>日主</strong> → <strong>五行含量</strong> → <strong>日主强弱</strong> → <strong>十神</strong> → <strong>格局</strong> → <strong>神煞</strong> → <strong>大运流年</strong> → <strong>综合评分</strong>
+      <br><br>
+      每一步都是下一步的基础，不能跳步。很多人一开始就看流年，是因为顺序搞反了。
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第一章 -->
+<section id="ch1" class="chapter">
+  <div class="ch-meta">第一章 · Chapter 01</div>
+  <h2 class="ch-title">八字命理到底是什么？</h2>
+  <p class="ch-hook">一份关于你这个人的天生说明书——不算命好坏，而是读懂能量结构</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义</div>
+    <div class="def-box-body">
+      <p><strong>八字</strong>，是指用一个人出生的「年、月、日、时」换算出来的四组干支（每组两个字），共八个字，因此叫「八字」。<br>
+      它是中国传统命理学的核心工具，用来分析一个人的天生能量结构、性格底色、优势短板与人生节奏。</p>
+    </div>
+  </div>
+
+  <h3>八字能告诉我们什么？</h3>
+  <p>很多人第一次接触八字，都会问：「我命好不好？」但这个问题其实问偏了。</p>
+  <p>八字更像是一份<strong>出厂说明书</strong>，告诉我们一个人天生的配置是什么。就像手机有不同的处理器和内存配置，每种配置跑起来的风格不一样，适合的使用场景也不同。</p>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>八字能分析的维度</th><th>通俗说法</th><th>举例</th></tr></thead>
+    <tbody>
+      <tr><td>能量结构</td><td>你这个人内在有哪些「资源」</td><td>是偏向逻辑决断，还是感性创意？</td></tr>
+      <tr><td>性格倾向</td><td>你天生的气质底色</td><td>是主动开拓型，还是稳守积累型？</td></tr>
+      <tr><td>优势与短板</td><td>哪里容易发力，哪里容易卡</td><td>执行力强但容易急，或善谋划但难落地</td></tr>
+      <tr><td>适合环境</td><td>什么平台、团队、行业最适合你</td><td>适合创业，还是适合大机构？</td></tr>
+      <tr><td>发展节奏</td><td>什么阶段爆发，什么阶段蓄力</td><td>30岁前打基础，40岁后才开始发力</td></tr>
+      <tr><td>现实兑现能力</td><td>天赋能不能真正落地变成价值</td><td>有才华但缺平台，或有平台但才华未外化</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>八字 ≠ 宿命论</h3>
+  <div class="callout cal-g">
+    <div class="callout-label">✅ 重要观念</div>
+    八字是结构分析，不是宿命判决。同一张命盘，放在不同的时代、不同的选择下，结果可以完全不同。<br>
+    <strong>命盘决定「你是谁」，选择决定「你成为什么」。</strong>
+  </div>
+
+  <h3>分析八字的标准顺序</h3>
+  <p>很多新人一上来就看神煞、查流年，越学越乱。原因是跳了步骤。正确的学习路径和分析路径是同一条线：</p>
+  <div class="formula">
+    <div class="f-title">🔢 分析顺序公式</div>
+    四柱（时间坐标）→ 日主（主角是谁）→ 五行含量（能量环境）→ 日主强弱（主角能扛多少）→ 十神（与外界的关系）→ 格局（人生主线）→ 神煞（特殊标签）→ 大运流年（时间节点）→ 综合评分
+  </div>
+
+  <div class="callout cal-y">
+    <div class="callout-label">💡 一句话记忆</div>
+    日主看「我是谁」，五行看「我在什么环境里」，十神看「我和外界是什么关系」，格局看「我的人生主线」，大运流年看「什么时候轮到我上场」。
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第二章 -->
+<section id="ch2" class="chapter">
+  <div class="ch-meta">第二章 · Chapter 02</div>
+  <h2 class="ch-title">四柱、天干、地支——八字的基础零件</h2>
+  <p class="ch-hook">先搞清楚八字的「字」是怎么来的，再谈分析</p>
+
+  <h3>四柱：出生时间的四个维度</h3>
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 四柱</div>
+    <div class="def-box-body">
+      <p>四柱，是指用出生的「年、月、日、时」各自换算出的一组天干+地支，共四组，每组称为一「柱」。<br>
+      每柱两个字（一个天干＋一个地支），四柱 × 两字 = 八个字，这就是「八字」名称的由来。</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>柱名</th><th>对应时间</th><th>代表的人生领域</th><th>通俗类比</th></tr></thead>
+    <tbody>
+      <tr><td>年柱</td><td>出生年份</td><td>家族背景、早年环境、祖辈影响、社会大背景</td><td>你来自哪里、出生在什么土壤</td></tr>
+      <tr><td>月柱</td><td>出生月份</td><td>成长环境、父母影响、事业基础、社会身份</td><td>你在哪种气候里长大</td></tr>
+      <tr><td>日柱</td><td>出生日期</td><td>核心自我、配偶关系（日主在此）</td><td>你本人，命盘的主角</td></tr>
+      <tr><td>时柱</td><td>出生时辰</td><td>子女缘、晚年运势、长远发展方向</td><td>你的后劲和人生下半场</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>十天干：十种能量类型</h3>
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 天干</div>
+    <div class="def-box-body">
+      <p>天干共十个：甲乙丙丁戊己庚辛壬癸。它们是五行的「细分版本」，代表外显的、主动的、容易被外界感知到的能量。<br>
+      可以把天干理解为一个人<strong>外在气质的描述词</strong>。</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>天干</th><th>五行</th><th>阴阳</th><th>形象比喻</th><th>核心气质关键词</th></tr></thead>
+    <tbody>
+      <tr><td>甲</td><td style="color:#16a34a">木</td><td><span class="badge b-o">阳</span></td><td>参天大树</td><td>正直、向上、开拓、有原则</td></tr>
+      <tr><td>乙</td><td style="color:#16a34a">木</td><td><span class="badge b-p">阴</span></td><td>藤蔓花草</td><td>柔韧、细腻、适应力强、弯而不折</td></tr>
+      <tr><td>丙</td><td style="color:#dc2626">火</td><td><span class="badge b-o">阳</span></td><td>太阳</td><td>热情、外放、感染力强、照亮他人</td></tr>
+      <tr><td>丁</td><td style="color:#dc2626">火</td><td><span class="badge b-p">阴</span></td><td>蜡烛灯火</td><td>温柔、敏感、精神性强、深情</td></tr>
+      <tr><td>戊</td><td style="color:#d97706">土</td><td><span class="badge b-o">阳</span></td><td>高山厚土</td><td>稳重、承载、守成、包容</td></tr>
+      <tr><td>己</td><td style="color:#d97706">土</td><td><span class="badge b-p">阴</span></td><td>田园湿土</td><td>务实、滋养、低调、内在资源丰富</td></tr>
+      <tr><td>庚</td><td style="color:#64748b">金</td><td><span class="badge b-o">阳</span></td><td>刀剑矿石</td><td>果断、规则、执行力强、不服软</td></tr>
+      <tr><td>辛</td><td style="color:#64748b">金</td><td><span class="badge b-p">阴</span></td><td>珠玉首饰</td><td>精致、审美高、标准高、爱美恨丑</td></tr>
+      <tr><td>壬</td><td style="color:#2563eb">水</td><td><span class="badge b-o">阳</span></td><td>江河大海</td><td>流动、智慧、变通、大局观</td></tr>
+      <tr><td>癸</td><td style="color:#2563eb">水</td><td><span class="badge b-p">阴</span></td><td>雨露泉水</td><td>敏锐、细腻、洞察力强、情绪感知强</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>十二地支：时间与季节的底层密码</h3>
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 地支</div>
+    <div class="def-box-body">
+      <p>地支共十二个：子丑寅卯辰巳午未申酉戌亥。它们对应十二个月和十二个时辰，是「底层的、隐性的能量」。<br>
+      天干像一个人外显的气质，地支则像<strong>内在的根基和土壤</strong>——不一定外显，但支撑着整张盘。</p>
+    </div>
+  </div>
+
+  <h3>藏干：地支里隐藏的天干</h3>
+  <p>每个地支内部都「藏」着一到三个天干，叫做「藏干」。这些隐藏的天干代表<strong>潜在的能力和隐性资源</strong>，在特定大运或流年被激活时才会显现出来。</p>
+
+  <div class="callout cal-b">
+    <div class="callout-label">💡 案例</div>
+    比如「亥」的主五行是水，但亥里面藏着壬水（主气）和甲木（中气）。<br>
+    所以一个亥字坐命的人，表面上是「水」的特质（灵活、智慧），但内心深处还有木的成长力和开拓精神。
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>地支</th><th>主五行</th><th>主气</th><th>中气</th><th>余气</th><th>季节</th></tr></thead>
+    <tbody>
+      <tr><td>寅</td><td style="color:#16a34a">木</td><td>甲木</td><td>丙火</td><td>戊土</td><td>春初</td></tr>
+      <tr><td>卯</td><td style="color:#16a34a">木</td><td>乙木</td><td>—</td><td>—</td><td>春</td></tr>
+      <tr><td>辰</td><td style="color:#d97706">土</td><td>戊土</td><td>乙木</td><td>癸水</td><td>春末</td></tr>
+      <tr><td>巳</td><td style="color:#dc2626">火</td><td>丙火</td><td>戊土</td><td>庚金</td><td>夏初</td></tr>
+      <tr><td>午</td><td style="color:#dc2626">火</td><td>丁火</td><td>己土</td><td>—</td><td>夏</td></tr>
+      <tr><td>未</td><td style="color:#d97706">土</td><td>己土</td><td>丁火</td><td>乙木</td><td>夏末</td></tr>
+      <tr><td>申</td><td style="color:#64748b">金</td><td>庚金</td><td>壬水</td><td>戊土</td><td>秋初</td></tr>
+      <tr><td>酉</td><td style="color:#64748b">金</td><td>辛金</td><td>—</td><td>—</td><td>秋</td></tr>
+      <tr><td>戌</td><td style="color:#d97706">土</td><td>戊土</td><td>辛金</td><td>丁火</td><td>秋末</td></tr>
+      <tr><td>亥</td><td style="color:#2563eb">水</td><td>壬水</td><td>甲木</td><td>—</td><td>冬初</td></tr>
+      <tr><td>子</td><td style="color:#2563eb">水</td><td>癸水</td><td>—</td><td>—</td><td>冬</td></tr>
+      <tr><td>丑</td><td style="color:#d97706">土</td><td>己土</td><td>癸水</td><td>辛金</td><td>冬末</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第三章 -->
+<section id="ch3" class="chapter">
+  <div class="ch-meta">第三章 · Chapter 03</div>
+  <h2 class="ch-title">日主——命盘里的「我」</h2>
+  <p class="ch-hook">整张命盘的分析，都是围绕日主展开的。先找到主角，才能读懂整个故事。</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 日主</div>
+    <div class="def-box-body">
+      <p><strong>日主</strong>，就是日柱的天干，代表「我」本人。<br>
+      命盘里其他所有的字（年干、月干、时干以及各柱地支），都要以日主为参照，才能计算出它们与「我」的关系（即十神）。<br>
+      <strong>日主是整张命盘的原点。</strong></p>
+    </div>
+  </div>
+
+  <h3>日主的相对性：同一个字，不同日主眼中意义完全不同</h3>
+  <div class="callout cal-y">
+    <div class="callout-label">💡 案例说明</div>
+    同样是「壬水」这个字：<br>
+    · 对「甲木日主」来说，壬水是滋养他的资源（偏印）<br>
+    · 对「丙火日主」来说，壬水是压制他的压力（七杀）<br>
+    · 对「庚金日主」来说，壬水是他对外输出的出口（食神）<br><br>
+    所以，八字分析必须先确定日主，然后才能读懂其他字的含义。
+  </div>
+
+  <h3>十种日主的气质速查</h3>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>日主</th><th>五行</th><th>形象</th><th>核心气质</th><th>容易卡住的地方</th></tr></thead>
+    <tbody>
+      <tr><td>甲木</td><td style="color:#16a34a">阳木</td><td>参天大树</td><td>有原则、开拓型、方向感强</td><td>太直、不够灵活、易对抗</td></tr>
+      <tr><td>乙木</td><td style="color:#16a34a">阴木</td><td>藤蔓花草</td><td>柔韧适应、细腻感知、关系敏锐</td><td>过于依附、缺乏主见</td></tr>
+      <tr><td>丙火</td><td style="color:#dc2626">阳火</td><td>太阳</td><td>热情感染力、天生带动者</td><td>起伏大、容易情绪化</td></tr>
+      <tr><td>丁火</td><td style="color:#dc2626">阴火</td><td>蜡烛</td><td>温柔细腻、精神深度强</td><td>过于敏感、在意他人看法</td></tr>
+      <tr><td>戊土</td><td style="color:#d97706">阳土</td><td>高山</td><td>稳重厚实、承载力强、靠谱</td><td>过于守成、行动慢</td></tr>
+      <tr><td>己土</td><td style="color:#d97706">阴土</td><td>田园</td><td>务实包容、滋养型人格</td><td>边界感弱、容易被利用</td></tr>
+      <tr><td>庚金</td><td style="color:#64748b">阳金</td><td>刀剑</td><td>执行力强、有魄力、标准高</td><td>太硬、不易妥协、人际摩擦</td></tr>
+      <tr><td>辛金</td><td style="color:#64748b">阴金</td><td>珠玉</td><td>精致审美、品味高、自尊心强</td><td>挑剔、受不了粗糙环境</td></tr>
+      <tr><td>壬水</td><td style="color:#2563eb">阳水</td><td>江海</td><td>大局观、流动智慧、多线处理</td><td>飘散、不够专注、难落地</td></tr>
+      <tr><td>癸水</td><td style="color:#2563eb">阴水</td><td>雨露</td><td>洞察力强、情绪感知力细腻</td><td>想太多、情绪波动、边界模糊</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>最常见的误解：日主 ≠ 五行含量</h3>
+  <div class="callout cal-o">
+    <div class="callout-label">⚠️ 注意</div>
+    很多新人以为「盘里土最多，就说这个人是土人」——这是错的。<br><br>
+    <strong>日主</strong>决定你是谁（主角类型）。<br>
+    <strong>五行含量</strong>决定你所处的能量环境（舞台配置）。<br><br>
+    例：壬水日主，命盘里土最多 → 说明他是一个「聪明灵活的人（壬水），但长期处于规则重、压力大的环境里（土多克水）」。不能说他是「土人」。
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第四章 -->
+<section id="ch4" class="chapter">
+  <div class="ch-meta">第四章 · Chapter 04</div>
+  <h2 class="ch-title">五行——能量的五种形态</h2>
+  <p class="ch-hook">木火土金水，不是神秘符号，而是五种能量状态的描述系统</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 五行</div>
+    <div class="def-box-body">
+      <p><strong>五行</strong>（木、火、土、金、水），是古人对自然界五种基本能量状态的归纳。在八字中，五行含量是指命盘里这五种能量各自出现了多少次，用来描述一个人的内在能量分布。</p>
+    </div>
+  </div>
+
+  <div class="wx-grid">
+    <div class="wx-card"><div class="wx-ico">🌿</div><div class="wx-nm" style="color:#16a34a">木</div><div class="wx-en">WOOD</div><div class="wx-p">✓ 生长·规划·创造·理想</div><div class="wx-n">✗ 过多则扩张失控</div></div>
+    <div class="wx-card"><div class="wx-ico">🔥</div><div class="wx-nm" style="color:#dc2626">火</div><div class="wx-en">FIRE</div><div class="wx-p">✓ 热情·行动·表达·感染</div><div class="wx-n">✗ 过多则急躁消耗大</div></div>
+    <div class="wx-card"><div class="wx-ico">🏔️</div><div class="wx-nm" style="color:#d97706">土</div><div class="wx-en">EARTH</div><div class="wx-p">✓ 稳定·承载·责任·耐力</div><div class="wx-n">✗ 过多则固执行动慢</div></div>
+    <div class="wx-card"><div class="wx-ico">⚔️</div><div class="wx-nm" style="color:#64748b">金</div><div class="wx-en">METAL</div><div class="wx-p">✓ 决断·逻辑·执行·标准</div><div class="wx-n">✗ 过多则冷漠压迫感</div></div>
+    <div class="wx-card"><div class="wx-ico">🌊</div><div class="wx-nm" style="color:#2563eb">水</div><div class="wx-en">WATER</div><div class="wx-p">✓ 智慧·灵活·洞察·多谋</div><div class="wx-n">✗ 过多则飘散不落地</div></div>
+  </div>
+
+  <h3>五行偏多与偏少：两面都要看</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>五行</th><th>偏多的正面表现</th><th>偏多的负面表现</th><th>缺失时的短板</th></tr></thead>
+    <tbody>
+      <tr><td style="color:#16a34a">木多</td><td>规划感强、理想主义、创造力丰富</td><td>冲动扩张、不稳定、难以落地</td><td>缺木：规划感弱、不善于成长与开拓</td></tr>
+      <tr><td style="color:#dc2626">火多</td><td>热情、行动力强、感染力高</td><td>急躁、冲头、消耗大、容易情绪化</td><td>缺火：行动力低、热情不足、表现欲弱</td></tr>
+      <tr><td style="color:#d97706">土多</td><td>稳定性高、责任感强、有耐力</td><td>沉重固执、行动慢、压力大</td><td>缺土：不稳定、难落地、根基虚</td></tr>
+      <tr><td style="color:#64748b">金多</td><td>逻辑清晰、决断力强、执行效率高</td><td>挑剔冷漠、压迫感强、难合作</td><td>缺金：规则感弱、决断力差、执行散</td></tr>
+      <tr><td style="color:#2563eb">水多</td><td>聪明灵活、信息敏感、多谋善变</td><td>飘散不定、想太多、不易落地</td><td>缺水：灵活度不足、情绪积压</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>五行相生相克：能量的流动规律</h3>
+  <div class="formula">
+    <div class="f-title">五行相生（每个生下一个，循环流动）</div>
+    木 → 生火 → 生土 → 生金 → 生水 → 生木（循环）<br><br>
+    <strong>记忆法：</strong>树木燃烧生火，火烧后成灰变土，土里长出矿石（金），金属上凝结水滴（水），水又滋养树木（木）。
+  </div>
+  <div class="formula">
+    <div class="f-title">五行相克（每个克另一个，制衡关系）</div>
+    木克土 · 土克水 · 水克火 · 火克金 · 金克木<br><br>
+    <strong>记忆法：</strong>树根穿透土地（木克土），大坝截断流水（土克水），洪水浇灭火焰（水克火），高温融化金属（火克金），斧头砍伐树木（金克木）。
+  </div>
+
+  <h3>五行含量分析的三个核心问题</h3>
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">偏不偏？</div>
+      <div class="card-body">有没有某种五行明显过多或过少？越偏，这个维度的正负特质就越极端。</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔄</div>
+      <div class="card-title">流不流通？</div>
+      <div class="card-body">五行之间的循环是否顺畅？如果某一环节被「克死」，能量就会在那里卡住。</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">日主能承受吗？</div>
+      <div class="card-body">这些能量对日主来说是帮助、消耗，还是压力？要结合日主强弱一起看。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第五章 -->
+<section id="ch5" class="chapter">
+  <div class="ch-meta">第五章 · Chapter 05</div>
+  <h2 class="ch-title">日主强弱——主角能扛多少？</h2>
+  <p class="ch-hook">强弱不是性格强不强，而是「主角有没有足够的能量承载命盘给他的任务」</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 日主强弱</div>
+    <div class="def-box-body">
+      <p><strong>日主强弱</strong>，是判断命盘里「我」（日主）的能量是否充足的技术指标。<br>
+      身强：日主能量充足，有足够的资本去承担压力、展开资源、对外输出。<br>
+      身弱：日主能量不足，需要保护和扶持，过度消耗容易「撑不住」。</p>
+    </div>
+  </div>
+
+  <div class="callout cal-o">
+    <div class="callout-label">⚠️ 常见误区</div>
+    身弱 ≠ 性格软弱，身强 ≠ 性格霸道。这是一个能量配置的技术判断，不是性格评价。<br>
+    <strong>就像一辆车的发动机功率：功率大，可以拉更多重量；功率小，超载就容易出问题。</strong>
+  </div>
+
+  <h3>判断日主强弱的五个维度</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>维度</th><th>说明</th><th>对强弱的影响</th><th>举例</th></tr></thead>
+    <tbody>
+      <tr><td>得令</td><td>出生月份的节气，是否旺相日主的五行</td><td>⬆️ 影响最大，得令则强</td><td>甲木生在春天（寅卯月）= 得令</td></tr>
+      <tr><td>得地</td><td>地支中有没有日主的「根」（同五行地支）</td><td>⬆️ 有根则强，根越多越稳</td><td>甲木有寅或卯在地支 = 有根</td></tr>
+      <tr><td>得生</td><td>命盘里有没有印星（生我的星）来扶持</td><td>⬆️ 印星旺则加分</td><td>甲木有壬癸水（生木之水）= 得生</td></tr>
+      <tr><td>得助</td><td>有没有比劫（与我同类的星）站同一阵营</td><td>⬆️ 同类帮助则加分</td><td>甲木有乙木、寅卯在盘中 = 得助</td></tr>
+      <tr><td>被克泄耗</td><td>官杀克我 / 食伤泄我 / 财星耗我的力度</td><td>⬇️ 克泄耗越重则越弱</td><td>甲木逢庚金多、土多 = 被克耗</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>身强与身弱：两种「用药方向」</h3>
+  <p>判断出强弱后，就能知道这个人「喜欢」什么运势环境，「忌讳」什么运势环境。这在大运流年分析中非常关键。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>类型</th><th>需要（喜）</th><th>避免（忌）</th><th>通俗说法</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge b-o">身强</span></td><td>食伤（输出才华）<br>财星（消耗能量）<br>官杀（接受压力挑战）</td><td>印星再补充<br>比劫再帮助</td><td>能量充足的人，需要出口和责任感，否则能量会积压成问题</td></tr>
+      <tr><td><span class="badge b-b">身弱</span></td><td>印星（资源支持）<br>比劫（同类帮助）</td><td>官杀（避免更大压力）<br>食伤（减少输出耗损）<br>财星（减少资源消耗）</td><td>能量不足的人，需要保护和补给，过度承担责任会适得其反</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>典型组合案例</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>组合</th><th>分析结果</th><th>实际表现</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge b-o">身强</span> + 食伤旺</td><td><span class="badge b-g">佳</span></td><td>表达欲强、创意充沛、有才华输出的能力，适合创作/技术/表达类工作</td></tr>
+      <tr><td><span class="badge b-b">身弱</span> + 食伤旺</td><td><span class="badge b-r">需注意</span></td><td>想法多但消耗过大，容易累、散、能量透支，需要先补充资源再输出</td></tr>
+      <tr><td><span class="badge b-o">身强</span> + 财旺</td><td><span class="badge b-g">佳</span></td><td>有能力承载和管理财富资源，驾驭得住</td></tr>
+      <tr><td><span class="badge b-b">身弱</span> + 财旺</td><td><span class="badge b-r">需注意</span></td><td>不是「钱多」，而是资源和责任压力超过承载力，容易被拖累</td></tr>
+      <tr><td><span class="badge b-o">身强</span> + 官杀旺</td><td><span class="badge b-y">压力大但能扛</span></td><td>有压力，但抗压能力强，可以承担重任，适合高要求职位</td></tr>
+      <tr><td><span class="badge b-b">身弱</span> + 官杀旺</td><td><span class="badge b-r">需注意</span></td><td>压力过大，容易焦虑、自我怀疑、发挥受限，需要「印星缓冲」</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第六章 -->
+<section id="ch6" class="chapter">
+  <div class="ch-meta">第六章 · Chapter 06</div>
+  <h2 class="ch-title">十神——我和世界的关系地图</h2>
+  <p class="ch-hook">十神是八字里最重要的一套关系系统，描述命盘里每一个字和「我」之间是什么关系</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 十神</div>
+    <div class="def-box-body">
+      <p><strong>十神</strong>，是用来描述命盘里各字与日主之间关系性质的系统。共分五大类、十种关系。<br>
+      十神不是固定标签——同一个天干，对不同日主来说是不同的十神。它是一个<strong>相对关系系统</strong>，必须以日主为参照才能确定。</p>
+    </div>
+  </div>
+
+  <div class="formula">
+    <div class="f-title">🔢 十神口诀（最快记忆法）</div>
+    生我的 → 正印（同性生）/ 偏印（异性生）<br>
+    我生的 → 食神（异性泄）/ 伤官（同性泄）<br>
+    克我的 → 正官（异性克）/ 七杀（同性克）<br>
+    我克的 → 正财（异性克）/ 偏财（同性克）<br>
+    同我的 → 比肩（同性同）/ 劫财（异性同）
+  </div>
+
+  <h3>十神速查全表</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>十神</th><th>关系类型</th><th>一句话定义</th><th>正向表现</th><th>过度/失位时</th><th>现代场景</th></tr></thead>
+    <tbody>
+      <tr><td>正印</td><td>同性生我</td><td>有体系的资源与保护</td><td>学习力强、贵人相助、有稳定依托</td><td>过度依赖、保守、行动迟缓</td><td>学历、证书、导师、平台</td></tr>
+      <tr><td>偏印</td><td>异性生我</td><td>非主流的灵感与洞察</td><td>直觉力强、灵感丰富、另辟蹊径</td><td>想太多、孤僻、脱离现实</td><td>直觉、玄学、非传统专业</td></tr>
+      <tr><td>食神</td><td>异性我生</td><td>温和、享受的输出能力</td><td>审美力强、享受生活、有福气</td><td>过于安逸、输出力弱</td><td>美食、艺术、生活品质</td></tr>
+      <tr><td>伤官</td><td>同性我生</td><td>锋芒毕露的表达与创意</td><td>创意强、表达力出色、突破规则</td><td>反规则、嘴快、容易得罪人</td><td>内容创作、技术创新、表演</td></tr>
+      <tr><td>正财</td><td>异性我克</td><td>稳定踏实的财务与管理</td><td>脚踏实地、收入稳定、执行落地</td><td>保守计较、压力大、灵活度差</td><td>稳定工资、现金流管理</td></tr>
+      <tr><td>偏财</td><td>同性我克</td><td>灵活多变的商业机会</td><td>商业嗅觉强、人脉广、机会意识</td><td>冒险不稳定、分散精力</td><td>销售、投资、中介、经纪</td></tr>
+      <tr><td>正官</td><td>异性克我</td><td>规范有序的规则与责任</td><td>责任感强、守规则、职位稳定</td><td>压抑自我、怕犯错、过于拘谨</td><td>职称职位、KPI、机构规则</td></tr>
+      <tr><td>七杀</td><td>同性克我</td><td>高强度的压力与挑战</td><td>魄力强、执行力高、竞争力强</td><td>焦虑冲突、冲动、难以合作</td><td>竞争对手、外部挑战、创业压力</td></tr>
+      <tr><td>比肩</td><td>同性同我</td><td>并肩同行的独立自我</td><td>独立性强、主见清晰、不依附</td><td>固执、不服管、难协作</td><td>自我品牌、独立创业、同行竞争</td></tr>
+      <tr><td>劫财</td><td>异性同我</td><td>争资源的合伙与竞争</td><td>行动力强、善合伙、打破边界</td><td>冲动破财、合伙纠纷</td><td>合伙人、资源争夺、市场竞争</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>十神的两面性：正向与过度的平衡</h3>
+  <div class="callout cal-g">
+    <div class="callout-label">✅ 核心原则</div>
+    每个十神都有正面和负面。不存在「好十神」或「坏十神」，关键是：<br>
+    · 这个十神有没有「根气」（有没有力量）？<br>
+    · 有没有适当的「制化」（平衡和疏导）？<br>
+    · 有没有现实的出口把它转化出来？<br><br>
+    <strong>有力量且被正确使用的十神，才能发挥正面价值。</strong>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第七章 -->
+<section id="ch7" class="chapter">
+  <div class="ch-meta">第七章 · Chapter 07</div>
+  <h2 class="ch-title">格局——命盘的主旋律</h2>
+  <p class="ch-hook">格局不是「好不好」，而是「主要走哪条路」——它决定了你天生适合什么样的人生架构</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 格局</div>
+    <div class="def-box-body">
+      <p><strong>格局</strong>，是指命盘里能量最旺、最成气候的那个十神主导形成的整体架构模式。<br>
+      格局回答的问题是：<strong>这个人的人生主旋律是什么？</strong><br>
+      如果十神是乐队里的各种乐器，格局就是整首曲子的主题。</p>
+    </div>
+  </div>
+
+  <h3>格局判断的三个核心问题</h3>
+  <div class="formula">
+    <div class="f-title">格局诊断公式</div>
+    ① 有没有主线？→ 哪个十神最旺、最成气候，形成了主导能量？<br>
+    ② 有没有制化？→ 强势能量有没有被疏导转化，避免走极端？<br>
+    ③ 有没有出口？→ 能量最终流向哪里，能否被现实接住变成价值？<br><br>
+    <strong>三者俱全 = 格局完整，人生有主线、有平衡、有落地</strong>
+  </div>
+
+  <h3>八大格局速查</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>格局</th><th>主导能量</th><th>性格倾向</th><th>天然优势</th><th>适合方向</th></tr></thead>
+    <tbody>
+      <tr><td>正印格</td><td>正印当令</td><td>好学、重精神、依赖平台</td><td>学习积累、贵人缘、专业深度</td><td>学术、专家、顾问、教育</td></tr>
+      <tr><td>偏印格</td><td>偏印当令</td><td>独特、灵感丰富、不走寻常路</td><td>直觉力、洞察、非主流思维</td><td>创意、研究、玄学、独立路线</td></tr>
+      <tr><td>食神格</td><td>食神当令</td><td>温和、享受生活、输出自然</td><td>审美、福气、温和表达、安全感</td><td>美食、艺术、内容、稳健商业</td></tr>
+      <tr><td>伤官格</td><td>伤官当令</td><td>有才华、不服管、创意强</td><td>表达力、创新、突破规则</td><td>创业、艺术、技术、内容创作</td></tr>
+      <tr><td>正财格</td><td>正财当令</td><td>脚踏实地、稳健务实</td><td>执行落地、稳定变现</td><td>财务、管理、实业、传统商业</td></tr>
+      <tr><td>偏财格</td><td>偏财当令</td><td>商业嗅觉强、人脉广</td><td>机会意识、资源整合</td><td>销售、投资、创业、经纪人</td></tr>
+      <tr><td>正官格</td><td>正官当令</td><td>守规则、重责任、有职业道德</td><td>职位稳定、可信赖、有秩序感</td><td>政府、大公司、管理、法律</td></tr>
+      <tr><td>七杀格</td><td>七杀当令</td><td>压力驱动、竞争意识强</td><td>执行力、魄力、攻坚能力</td><td>创业、竞技、军警、高压岗位</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>高价值格局组合解析</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>组合</th><th>含义</th><th>现代对应场景</th></tr></thead>
+    <tbody>
+      <tr><td><strong>伤官配印</strong></td><td>有创意表达，又有知识体系支撑；既有个性，又不失规范</td><td>专业内容创作、技术教育、高端咨询</td></tr>
+      <tr><td><strong>食神制杀</strong></td><td>用温和的方式化解强大压力；以策略代替对抗，攻而不躁</td><td>产品经理、谈判专家、咨询顾问</td></tr>
+      <tr><td><strong>杀印相生</strong></td><td>压力转化为专业权威；危机催生责任感与领导力</td><td>危机管理、战略顾问、医疗教育</td></tr>
+      <tr><td><strong>食伤生财</strong></td><td>靠才华表达、产品输出直接变现；现代创业黄金路径</td><td>IP创业、内容电商、技术变现</td></tr>
+      <tr><td><strong>财官相生</strong></td><td>资源与职位互相支持，传统职场晋升通道</td><td>企业管理、传统商业、职场晋升</td></tr>
+      <tr><td><strong>印比相生</strong></td><td>学习资源积累 + 同类支持，长期专业化发展</td><td>学术研究、专业积累、自我品牌</td></tr>
+      <tr><td><strong>比劫夺财</strong></td><td>合伙关系影响财务；需要明确规则与边界</td><td>合伙创业前务必签好协议</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout cal-g">
+    <div class="callout-label">✅ 核心原则</div>
+    格局的核心不是「有什么」，而是「这些力量有没有被正确使用」。<br>
+    同样有七杀，有的人用来攻坚突破，有的人用来焦虑内耗——区别在于格局整体的制化与出口设计。
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第八章 -->
+<section id="ch8" class="chapter">
+  <div class="ch-meta">第八章 · Chapter 08</div>
+  <h2 class="ch-title">神煞——命盘里的特殊标签</h2>
+  <p class="ch-hook">神煞共分六大类。先看格局，再用神煞补充细节——顺序不能反</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 神煞</div>
+    <div class="def-box-body">
+      <p><strong>神煞</strong>，是八字里一套补充性的特殊标签系统，根据干支之间的特定组合来判断。<br>
+      它不能替代十神和格局的分析，只能在格局基础上增加细节描述，就像给一个人的画像加上具体的细节标注。<br>
+      <strong>神煞 = 剧情滤镜，不是主程序。先看十神格局，再看神煞。</strong></p>
+    </div>
+  </div>
+
+  <div class="callout cal-o">
+    <div class="callout-label">⚠️ 最常见的误区</div>
+    很多人一上来就看神煞，看到「孤辰」就焦虑，看到「天乙贵人」就兴奋——这是本末倒置。<br>
+    <strong>神煞的力量受十神格局约束，格局不好，贵人也发挥不出来；格局好，凶煞也能化解转用。</strong>
+  </div>
+
+  <h3>神煞六大分类总览</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>分类</th><th>英文</th><th>核心作用</th><th>代表神煞</th></tr></thead>
+    <tbody>
+      <tr><td>① 命格气质类</td><td>Character</td><td>决定气质底色、性格烙印和人生格局感</td><td>魁罡、将星、华盖、文昌</td></tr>
+      <tr><td>② 贵人资源类</td><td>Nobility</td><td>带来外部支持、机遇、平台和保护</td><td>天乙贵人、天德、月德、太极贵人、国印贵人</td></tr>
+      <tr><td>③ 动星变动类</td><td>Mobility</td><td>影响流动性、迁移、跨域发展</td><td>驿马、劫煞（动）</td></tr>
+      <tr><td>④ 人缘感情类</td><td>Social</td><td>影响人际魅力、感情运势和婚姻状态</td><td>桃花、红鸾、天喜、阴阳差错</td></tr>
+      <tr><td>⑤ 力量双刃类</td><td>Power</td><td>中性强力星，用好是优势，失控是风险</td><td>羊刃</td></tr>
+      <tr><td>⑥ 凶煞觉察类</td><td>Awareness</td><td>提示挑战、困局与需要注意的能量方向</td><td>孤辰/寡宿、天罗地网、亡神、空亡、白虎</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sect-div">① 命格气质类</div>
+
+  <p>这类神煞直接影响一个人的气质底色和性格烙印，往往是命盘里最具辨识度的标签。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向表现</th><th>需注意的地方</th></tr></thead>
+    <tbody>
+      <tr><td>魁罡</td><td>Iron Will</td><td>日柱为庚辰、庚戌、壬辰、戊戌之一，气场强烈，不服输</td><td>骨气、抗压力强、领袖气场、有原则不妥协</td><td>过于刚硬，容易激化人际冲突，男命更烈</td></tr>
+      <tr><td>将星</td><td>Command</td><td>主统领力和权威感，天生有组织和掌控的气质</td><td>组织能力强、天然权威感、适合带团队</td><td>容易过于控制，难以放权，需学会授权</td></tr>
+      <tr><td>华盖</td><td>Creative</td><td>主艺术、灵性与独特审美，精神世界丰富</td><td>艺术感深、审美力强、灵性洞察、独树一帜</td><td>孤高不合群，容易曲高和寡，现实落地感弱</td></tr>
+      <tr><td>文昌</td><td>Literary</td><td>主文字才华、学习力与考试运，兼具贵人属性</td><td>表达清晰、文字有力、学习快、考证有加持</td><td>过于书卷气，有时与现实操作脱节</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout cal-b">
+    <div class="callout-label">💡 案例</div>
+    魁罡日柱的人（庚辰、庚戌、壬辰、戊戌），往往给人「不好惹」的第一印象，但同时也让人感到可靠和有担当。很多在高压行业（医疗、律师、军警、创业）取得成就的人，命盘里有魁罡加持。
+  </div>
+
+  <div class="sect-div">② 贵人资源类</div>
+
+  <p>这类神煞是命盘里的「外援系统」，代表来自他人、平台或机缘的支持力量。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向表现</th><th>需注意的地方</th></tr></thead>
+    <tbody>
+      <tr><td>天乙贵人</td><td>Noble</td><td>最重要的贵人星，逢凶化吉，关键时刻有人相助</td><td>贵人缘极好，危难时总有人拉一把</td><td>不能只靠贵人，自身能力才是根本</td></tr>
+      <tr><td>太极贵人</td><td>Supreme</td><td>逢凶化吉能力强，有化险为夷的能量</td><td>遇事有转机，逢难能解，适应力强</td><td>有时会因为「总能解决」而放松警惕</td></tr>
+      <tr><td>国印贵人</td><td>State Seal</td><td>与权贵、机构、官方平台的缘分</td><td>适合进入大平台、政府或正规机构借力</td><td>需要主动对接，不会自动上门</td></tr>
+      <tr><td>天德贵人</td><td>Heavenly Virtue</td><td>化解凶煞，带来善缘与暗中保护</td><td>少是非，凶事能化，善缘多</td><td>保护性强但不主动带来资源</td></tr>
+      <tr><td>月德贵人</td><td>Monthly Virtue</td><td>与天德类似，化解月令凶气，带来贵人保护</td><td>遇事有贵人出手，是非少，口碑好</td><td>功效偏保护性，进攻性弱</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sect-div">③ 动星变动类</div>
+
+  <p>这类神煞影响一个人的流动性与变化节奏，不一定是「好」或「坏」，关键看命盘整体是否适合流动。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向表现</th><th>需注意的地方</th></tr></thead>
+    <tbody>
+      <tr><td>驿马</td><td>Travel</td><td>主迁移、出行、流动，动中求财、异地发展</td><td>跨城市/跨国机会多，适合流动型职业</td><td>难以在一处长期扎根，「心定才能立业」</td></tr>
+      <tr><td>劫煞</td><td>Disruption</td><td>主突发变动、动荡与危机，也有打破格局之力</td><td>危机中能爆发出行动力，适合高变动行业</td><td>容易遭遇突发状况，需要风险意识</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout cal-y">
+    <div class="callout-label">💡 说明</div>
+    <strong>驿马不是坏事。</strong>对于适合流动的格局（如偏财格、食伤格），驿马是放大器；但对于需要稳扎稳打的格局（如正财格、正印格），驿马会带来不必要的折腾感。
+  </div>
+
+  <div class="sect-div">④ 人缘感情类</div>
+
+  <p>这类神煞主要影响人际吸引力、感情运势和婚姻状态。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向表现</th><th>需注意的地方</th></tr></thead>
+    <tbody>
+      <tr><td>桃花</td><td>Charisma</td><td>主人缘、魅力与感情，外形吸引力与社交能量</td><td>审美感强、吸引力高、社交传播力佳</td><td>感情关系易复杂，需要边界感</td></tr>
+      <tr><td>红鸾</td><td>Romance</td><td>主婚嫁喜事，流年遇红鸾常有感情进展</td><td>适合谈婚论嫁的时间节点信号</td><td>不代表感情顺利，仍需看日主与配星</td></tr>
+      <tr><td>天喜</td><td>Joy</td><td>主喜庆之事，常与红鸾同论，代表好事临门</td><td>生子、结婚、升迁的吉庆信号</td><td>喜庆能量，但需配合大运才能落实</td></tr>
+      <tr><td>阴阳差错</td><td>Misalign</td><td>主感情与婚姻中的错位、坎坷与不顺</td><td>感情经历丰富，阅历深，理解力强</td><td>婚姻容易出现时机错位、缘分错位的问题</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="sect-div">⑤ 力量双刃类</div>
+
+  <p>羊刃是命理中最具代表性的「双刃剑」神煞，单独成类，因为它的能量是中性的强力，既可成大器，也可伤人伤己。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向表现</th><th>需注意的地方</th></tr></thead>
+    <tbody>
+      <tr><td>羊刃</td><td>Sword</td><td>日主五行旺极之地，冲劲强、能量大，有「刃」之险</td><td>决断力强、胆识过人、执行力快、能成大事</td><td>冲动刚烈、易激化冲突、容易两败俱伤</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout cal-b">
+    <div class="callout-label">💡 案例</div>
+    历史上很多将领、外科医生、运动员命中有羊刃。羊刃的「刃」既伤人也伤己——关键在于有没有「制刃」的力量（通常是食神或正官来约束）。有制化的羊刃是利剑，没有制化的羊刃是凶器。
+  </div>
+
+  <div class="sect-div">⑥ 凶煞觉察类</div>
+
+  <p>这类神煞代表需要觉察和注意的挑战性能量，不是宣判，而是提醒。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>神煞</th><th>英文标签</th><th>核心含义</th><th>正向转化</th><th>未转化时的表现</th></tr></thead>
+    <tbody>
+      <tr><td>孤辰/寡宿</td><td>Solitude</td><td>主孤独感与亲密关系困难，独处能量强</td><td>高度独立、专注力强、自我完整、深度思考</td><td>亲密关系困难，情感孤独，难以依赖他人</td></tr>
+      <tr><td>天罗地网</td><td>Trapped</td><td>辰戌为天罗地网，主困局、被限制与压制</td><td>逆境中磨出韧性，能在限制中找出路</td><td>容易陷入进退两难、出路受阻的局面</td></tr>
+      <tr><td>亡神</td><td>Warning</td><td>主危机感与突发状况，也有激发警觉的力量</td><td>危机意识强，预判风险能力好</td><td>容易遭遇突发变故，需防范未然</td></tr>
+      <tr><td>空亡</td><td>Void</td><td>命盘中该柱的天干落入空亡，代表该领域能量虚化</td><td>超脱感、直觉力强、不执着于物质形式</td><td>对应领域（财、官、印等）容易落空</td></tr>
+      <tr><td>白虎</td><td>White Tiger</td><td>主意外、血光、外伤，也代表权力与威严</td><td>在医疗、军警、外科等领域可正向转化</td><td>容易有意外伤病，需注意人身安全</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>凶煞转化：压力变能力的公式</h3>
+  <div class="formula">
+    <div class="f-title">🔢 凶煞实际影响公式</div>
+    <strong>凶煞实际影响 = 凶煞本身强度 − 制化能力 − 现实转化程度</strong><br><br>
+    · 结果大于零 → 仍有需要注意的风险，建议主动化解<br>
+    · 结果接近零或为负 → 已被转化为能力与优势，反成竞争力
+  </div>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>凶煞</th><th>没有转化时</th><th>被正确转化后</th><th>转化的关键</th></tr></thead>
+    <tbody>
+      <tr><td>羊刃</td><td>冲动刚烈、两败俱伤、惹祸</td><td>决断力、胆识、快速行动力</td><td>食神或正官来制约约束</td></tr>
+      <tr><td>孤辰/寡宿</td><td>亲密困难、情感孤独</td><td>高度独立、专注力强、自我完整</td><td>选择适合独立发展的职业路线</td></tr>
+      <tr><td>天罗地网</td><td>困局、出路受阻</td><td>在限制中磨出韧性与出路</td><td>接受约束反而找到结构性机会</td></tr>
+      <tr><td>空亡</td><td>对应领域落空虚化</td><td>超脱感、直觉力强、不执着形式</td><td>转向精神/创意领域，弱化物质执念</td></tr>
+      <tr><td>亡神</td><td>突发变故、风险不断</td><td>危机意识强、预判风险好</td><td>主动做风险管理，变被动为主动</td></tr>
+      <tr><td>白虎</td><td>意外伤病、血光之灾</td><td>在高风险行业成为专业权威</td><td>从事医疗/军警/运动，正向转化</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout cal-g">
+    <div class="callout-label">✅ 核心原则</div>
+    <strong>煞不是判决，是提醒。</strong><br>
+    凶煞本质上是一种「高压但高能」的配置——压得住是能力，压不住是问题。<br>
+    真正决定结果的，是格局的制化设计与现实中的选择和行动。<br><br>
+    <strong>「有煞而制化 = 英雄；有煞无制化 = 莽夫；无煞而懦弱 = 平庸。」</strong>
+  </div>
+</section>
+
+<section id="ch9" class="chapter">
+  <div class="ch-meta">第九章 · Chapter 09</div>
+  <h2 class="ch-title">大运与流年——什么时候轮到你上场？</h2>
+  <p class="ch-hook">命盘是底牌，大运决定什么时候打出来，流年决定今年遇到了什么</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 大运与流年</div>
+    <div class="def-box-body">
+      <p><strong>大运</strong>：以10年为单位的阶段性运势环境。相当于这十年的「气候背景」——宏观环境是什么，适合做什么类型的事情。<br><br>
+      <strong>流年</strong>：每一年叠加在大运上的触发事件。相当于「当年的天气」——在大运的气候基础上，今年具体发生了什么。<br><br>
+      <strong>公式：</strong>大运是气候，流年是天气。同样的大雨，在夏天和冬天、在沙漠和森林，影响完全不同。</p>
+    </div>
+  </div>
+
+  <h3>大运的五种类型与对应策略</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>大运类型</th><th>阶段特征</th><th>容易激活的能力</th><th>这十年的策略</th></tr></thead>
+    <tbody>
+      <tr><td>财星大运</td><td>资源密集型环境</td><td>商业变现、资源积累、客户拓展</td><td>主动出击，抓住商业机会，建立收入模型</td></tr>
+      <tr><td>官杀大运</td><td>高压竞争型环境</td><td>职位晋升、组织责任、压力突破</td><td>承担责任，在压力中建立权威和信任</td></tr>
+      <tr><td>印星大运</td><td>知识积累型环境</td><td>学习沉淀、贵人出现、专业化</td><td>低头积累，建立知识壁垒，等待贵人</td></tr>
+      <tr><td>食伤大运</td><td>表达输出型环境</td><td>才华外化、内容创作、产品输出</td><td>把想法落地，建立个人IP和表达力</td></tr>
+      <tr><td>比劫大运</td><td>竞争自主型环境</td><td>独立创业、合伙竞争、自我意志</td><td>强化自我，建立差异化竞争，警惕合伙风险</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>流年分析：三个叠加层次</h3>
+  <div class="formula">
+    <div class="f-title">🔢 流年分析公式（三层叠加）</div>
+    <strong>第一层：</strong>流年天干与日主的十神关系<br>
+    → 今年带来的是资源？压力？机会？竞争？<br><br>
+    <strong>第二层：</strong>流年地支与命盘原局的冲合刑害<br>
+    → 有没有「激活」命盘里某些隐性能量？<br><br>
+    <strong>第三层：</strong>当前大运的底色放大<br>
+    → 这一年的事件，在大运的框架下会朝什么方向放大？<br><br>
+    <strong>三层叠加分析，才是完整的流年判断。</strong>
+  </div>
+
+  <h3>现实环境：天赋落地的土壤</h3>
+  <p>即使大运和流年都到位了，现实环境不配合，天赋依然无法兑现。</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>环境维度</th><th>影响内容</th><th>正向示例</th><th>负向示例</th></tr></thead>
+    <tbody>
+      <tr><td>家庭教育</td><td>是否识别并保护天赋，减少短板带来的自我否定</td><td>父母看到孩子的艺术天赋，及时引导</td><td>用成绩否定一切，压制天赋</td></tr>
+      <tr><td>职业赛道</td><td>是否站在适合自己能量结构的位置</td><td>伤官格做内容创业，如鱼得水</td><td>伤官格做政府机关，格格不入</td></tr>
+      <tr><td>资源平台</td><td>有没有资金、人脉、机会的配套</td><td>身在互联网公司的产品负责人</td><td>有能力但没有平台和资源</td></tr>
+      <tr><td>时代红利</td><td>当前社会趋势是否放大命盘优势</td><td>偏财格赶上了电商创业潮</td><td>同样的能力，但行业已衰退</td></tr>
+      <tr><td>自我选择</td><td>有没有主动把天赋外化、产品化、商业化</td><td>把专业能力包装成课程变现</td><td>有才华但一直等待被发现</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="formula">
+    <div class="f-title">🔢 天赋兑现的四要素</div>
+    命盘（有种子）× 大运（给气候）× 现实环境（给土壤）× 自我选择（决定怎么种）<br><br>
+    四个变量缺一不可。
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- 第十章 -->
+<section id="ch10" class="chapter">
+  <div class="ch-meta">第十章 · Chapter 10</div>
+  <h2 class="ch-title">综合评分体系——量化天赋兑现度</h2>
+  <p class="ch-hook">光看命盘还不够。真正的竞争力，是三个层面的综合</p>
+
+  <div class="def-box">
+    <div class="def-box-header">📖 定义 · 综合评分体系</div>
+    <div class="def-box-body">
+      <p>综合评分体系，是把「底层命盘结构 + 性格表达方式 + 现实兑现条件」整合成一个可量化框架的工具。<br>
+      它解决的问题是：为什么有些人盘面很强，却一事无成？为什么有些人盘面普通，实际很厉害？<br>
+      <strong>答案：天赋是否落地，受三个层面共同决定。</strong></p>
+    </div>
+  </div>
+
+  <div class="formula">
+    <div class="f-title">🔢 综合评分公式</div>
+    <strong>命盘结构分（70）+ MBTI适配分（20）+ 年龄/环境修正分（10）= 满分 100</strong>
+  </div>
+
+  <div class="score-ov">
+    <div class="sc-box"><span class="big">70</span><div class="nm">命盘结构分</div><div class="sm">底层天赋配置</div></div>
+    <div class="sc-box"><span class="big">20</span><div class="nm">MBTI 适配分</div><div class="sm">性格表达方式</div></div>
+    <div class="sc-box"><span class="big">10</span><div class="nm">环境修正分</div><div class="sm">现实兑现条件</div></div>
+  </div>
+
+  <h3>第一模块：命盘结构分（满分70分）</h3>
+  <p>这是核心分，评估底层天赋配置的质量和完整度。</p>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>子项</th><th>满分</th><th>评估方向</th><th>常见扣分原因</th></tr></thead>
+    <tbody>
+      <tr><td>日主强弱与承载力</td><td>15分</td><td>日主有没有根气，能否扛住财官食伤的压力</td><td>日主无根、强弱严重失衡</td></tr>
+      <tr><td>五行平衡与流通</td><td>15分</td><td>五行是否顺畅循环，有没有偏枯或壅塞</td><td>某种五行极端偏多或某一环节堵死</td></tr>
+      <tr><td>格局骨架完整度</td><td>15分</td><td>格局是否清晰有力，有主线、有制化</td><td>格局破局、无主线、能量互相内耗</td></tr>
+      <tr><td>用神喜忌清晰度</td><td>10分</td><td>调整方向是否明确，用神是否有效落地</td><td>用神模糊、喜忌相战</td></tr>
+      <tr><td>贵人/凶煞/特殊结构</td><td>8分</td><td>贵人成体系加分，凶煞看制化转化程度</td><td>凶煞失控无出口，或贵人结构不成体系</td></tr>
+      <tr><td>多系统交叉验证</td><td>7分</td><td>八字与紫微、星盘、人类图等是否互相印证</td><td>多系统结论相互矛盾，难以判断</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="score-bars">
+    <div style="font-size:10px;color:var(--text-3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;">命盘结构分 · 权重分布（满分70）</div>
+    <div class="sc-row"><div class="sc-lbl">日主强弱与承载力</div><div class="sc-bar"><div class="sc-fill" style="width:100%"></div></div><div class="sc-val">15 分</div></div>
+    <div class="sc-row"><div class="sc-lbl">五行平衡与流通</div><div class="sc-bar"><div class="sc-fill" style="width:100%"></div></div><div class="sc-val">15 分</div></div>
+    <div class="sc-row"><div class="sc-lbl">格局骨架完整度</div><div class="sc-bar"><div class="sc-fill" style="width:100%"></div></div><div class="sc-val">15 分</div></div>
+    <div class="sc-row"><div class="sc-lbl">用神喜忌清晰度</div><div class="sc-bar"><div class="sc-fill" style="width:66.7%"></div></div><div class="sc-val">10 分</div></div>
+    <div class="sc-row"><div class="sc-lbl">贵人/凶煞</div><div class="sc-bar"><div class="sc-fill" style="width:53.3%"></div></div><div class="sc-val">8 分</div></div>
+    <div class="sc-row"><div class="sc-lbl">多系统交叉验证</div><div class="sc-bar"><div class="sc-fill" style="width:46.7%"></div></div><div class="sc-val">7 分</div></div>
+  </div>
+
+  <h3>第二模块：MBTI适配分（满分20分）</h3>
+  <p>MBTI 是命盘的「现实镜子」——它映照出这个人在日常生活中实际呈现的行为模式。适配分不是看哪个类型更高级，而是看<strong>性格表现是否能把命盘优势真正发挥出来</strong>。</p>
+
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>评估维度</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>MBTI 与命盘是否一致</td><td>日常行为模式是否贴合底层能量结构</td></tr>
+      <tr><td>能否放大命盘优势</td><td>性格特点是否让天赋更容易外化</td></tr>
+      <tr><td>是否弥补命盘短板</td><td>性格能否在行动层面补充命盘的弱点</td></tr>
+      <tr><td>现实验证</td><td>真实生活中是否表现出这种模式</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>典型高适配组合示例</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>命盘结构 + MBTI</th><th>为什么高适配</th><th>最佳场景</th></tr></thead>
+    <tbody>
+      <tr><td>辛金七杀 + ISTJ</td><td>精致标准的金系能量 × 严谨执行的人格，完美匹配</td><td>精密技术、规则执行、品质管控</td></tr>
+      <tr><td>壬水食神 + ENFJ</td><td>流动广博的智慧能量 × 善于影响他人的人格</td><td>社群教育、公众传播、领导型教练</td></tr>
+      <tr><td>戊土偏印 + INFP</td><td>厚实承载的土能量 × 追求美学与意义的人格</td><td>美学创作、精神引导、艺术教育</td></tr>
+      <tr><td>庚金伤官 + ESTP</td><td>强势执行的金能量 × 行动派人格，能量直接转化</td><td>社交商业、现场决策、产品落地</td></tr>
+      <tr><td>甲木正官 + ENTJ</td><td>开拓有原则的木能量 × 战略指挥型人格</td><td>战略规划、组织领导、系统搭建</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>第三模块：年龄/环境修正分（满分10分）</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>维度</th><th>加分逻辑</th><th>减分逻辑</th></tr></thead>
+    <tbody>
+      <tr><td>年龄阶段</td><td>孩子：成长空间大，潜力分高；成年人：天赋已充分兑现</td><td>成年人天赋强但完全未外化，分低</td></tr>
+      <tr><td>家庭环境</td><td>有支持、有引导、资源配套充分</td><td>家庭压制天赋、环境与能量完全错配</td></tr>
+      <tr><td>职业赛道</td><td>站在适合自己能量结构的位置</td><td>职业与天赋完全相悖</td></tr>
+      <tr><td>时代红利</td><td>社会和行业趋势放大命盘优势</td><td>行业衰退，优势无处施展</td></tr>
+      <tr><td>自我选择</td><td>主动把优势产品化、商业化</td><td>被动等待，优势从未外化</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>综合评分区间解读</h3>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>分数区间</th><th>状态描述</th><th>含义</th></tr></thead>
+    <tbody>
+      <tr><td><span class="badge b-o" style="font-size:14px">90分以上</span></td><td>综合势能极强</td><td>结构强、性格贴合、环境支持，在当前阶段发挥度极高</td></tr>
+      <tr><td><span class="badge b-g" style="font-size:14px">85–89分</span></td><td>高度兑现</td><td>核心结构很强，现实兑现度高，方向清晰</td></tr>
+      <tr><td><span class="badge b-b" style="font-size:14px">80–84分</span></td><td>有明确强项</td><td>需要合适的位置和平台来放大优势</td></tr>
+      <tr><td><span class="badge b-y" style="font-size:14px">75–79分</span></td><td>天赋有待释放</td><td>有明显天赋，但容易被责任、内耗、分散精力拖累</td></tr>
+      <tr><td><span class="badge b-p" style="font-size:14px">70–74分</span></td><td>潜力尚未外化</td><td>有才气或稳定性，但外化度、承载力、环境支持尚不足</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>这套评分体系的实际应用场景</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-icon">👥</div><div class="card-title">选人与组团</div><div class="card-body">判断团队成员的天赋结构与角色适配，优化分工，避免错位</div></div>
+    <div class="card"><div class="card-icon">📚</div><div class="card-title">孩子教育规划</div><div class="card-body">识别孩子的天赋方向，提前布局成长环境与资源配置</div></div>
+    <div class="card"><div class="card-icon">💼</div><div class="card-title">职业赛道选择</div><div class="card-body">判断哪条赛道最能放大自己的命盘核心能量</div></div>
+    <div class="card"><div class="card-icon">🤝</div><div class="card-title">合伙人分析</div><div class="card-body">多人命盘的五行互补与能量协作，预判长期合作风险</div></div>
+    <div class="card"><div class="card-icon">📈</div><div class="card-title">大运节点规划</div><div class="card-body">当前大运适合做什么，什么时候是最佳发力窗口</div></div>
+    <div class="card"><div class="card-icon">🔮</div><div class="card-title">多系统交叉验证</div><div class="card-body">八字 + 紫微斗数 + 星座星盘 + 人类图，多维度印证</div></div>
+  </div>
+
+  <div class="sect-div">全书总结</div>
+
+  <div class="callout cal-o">
+    <div class="callout-label">📌 一句话总结</div>
+    <strong>命理看趋势，MBTI 看镜子，环境是土壤，教育与分工决定才能能否真正落地。</strong><br><br>
+    综合评分真正衡量的是：<br>
+    一个人的 <strong>天赋结构</strong> × <strong>表达方式</strong> × <strong>现实兑现度</strong>
+  </div>
+
+  <div style="margin-top:48px;padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+    <div style="font-size:10px;color:var(--text-3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">后记 · 橙皮书系列</div>
+    <p style="font-size:13.5px;color:var(--text-2);line-height:1.85;margin:0;">
+      本书为橙皮书系列入门卷，定位为新人快速入门的分析框架工具书。<br>
+      进阶内容包括：合婚分析、流年精批、神煞深度解析、紫微斗数交叉验证、人类图四体结合等，将在系列后续专题中逐步展开。<br><br>
+      <span style="color:var(--orange);font-weight:600;">橙皮书 v2.0 · 2025 · 入门与速查版</span>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+// Sidebar toggle
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('overlay');
+  sb.classList.toggle('open');
+  ov.classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// Nav active link
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id]');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + e.target.id) a.classList.add('active');
+      });
+    }
+  });
+}, { threshold: 0.15, rootMargin: '-60px 0px -50% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// Reading progress bar
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+  bar.style.width = pct + '%';
+  document.getElementById('back-top').classList.toggle('show', window.scrollY > 400);
+});
+
+// QA accordion
+document.querySelectorAll('.qa-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+</script>
+
+</body></html>
