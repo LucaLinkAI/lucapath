@@ -1,4 +1,4 @@
-# LucaPath 路卡成长罗盘
+# LucaPath 路卡命运罗盘
 
 Chinese family destiny analysis app — BaZi (八字), Five Elements (五行), MBTI, and Western astrology combined into polished HTML reports for affluent Chinese families navigating child development and life decisions.
 

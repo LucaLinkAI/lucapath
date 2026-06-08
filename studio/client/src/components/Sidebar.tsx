@@ -52,7 +52,7 @@ export function Sidebar() {
       <div className="brand">
         <div className="brand-mark">🧭</div>
         <div>
-          <div className="brand-name">路卡成长罗盘</div>
+          <div className="brand-name">路卡命运罗盘</div>
           <div className="brand-sub">LucaPath Studio</div>
         </div>
       </div>

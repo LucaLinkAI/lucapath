@@ -27,7 +27,7 @@ export function Landing() {
 
   return (
     <div className="landing">
-      <div className="landing-eyebrow">路卡成长罗盘 · LucaPath Studio</div>
+      <div className="landing-eyebrow">路卡命运罗盘 · LucaPath Studio</div>
       <div className="landing-logo">
         LucaPath
         <span className="en">Destiny Intelligence</span>

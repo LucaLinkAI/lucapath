@@ -58,7 +58,7 @@ book = epub.EpubBook()
 book.set_identifier("bazi-orange-book-v1")
 book.set_title("八字命理橙皮书 · 入门与速查")
 book.set_language("zh-CN")
-book.add_author("LucaPath 路卡成长罗盘")
+book.add_author("LucaPath 路卡命运罗盘")
 
 style = epub.EpubItem(
     uid="style",

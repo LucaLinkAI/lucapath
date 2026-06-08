@@ -76,7 +76,7 @@ export function ChatPanel() {
       onDrop={onDrop}
     >
       <div className="chat-head">
-        <div className="chat-head-title">{current?.title ?? '路卡成长罗盘'}</div>
+        <div className="chat-head-title">{current?.title ?? '路卡命运罗盘'}</div>
         <div className="chat-head-right">
           <div className="status-indicator">
             <span className={`status-dot${busy ? ' busy' : ''}`} />

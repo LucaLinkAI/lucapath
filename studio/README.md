@@ -1,4 +1,4 @@
-# LucaPath Studio 路卡成长罗盘
+# LucaPath Studio 路卡命运罗盘
 
 A local single-user webapp that wraps the four LucaPath destiny-report skills behind a
 Claude-style 3-column chat UI. It runs on **your machine's Claude Code Pro/Max

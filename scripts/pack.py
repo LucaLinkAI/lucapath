@@ -74,7 +74,7 @@ def make_plugin_dir(skills: list[Path], plugin_name: str, out_dir: Path) -> Path
         "name": plugin_name,
         "version": "1.0.2",
         "description": (
-            "路卡成长罗盘 — Chinese family destiny analysis: "
+            "路卡命运罗盘 — Chinese family destiny analysis: "
             "individual BaZi/MBTI/astrology reports, family compatibility, "
             "children AI-era talent planning, business partner chemistry."
         ),

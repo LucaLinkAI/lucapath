@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-LucaPath (路卡成长罗盘) / 三才 is a Chinese-language family destiny analysis web app that integrates BaZi (八字/Four Pillars), Five Elements (五行), MBTI, and Western psychology to help Chinese families understand their children's strengths and educational path. The target audience is affluent Chinese families (especially in the US/Canada) seeking holistic child development guidance.
+LucaPath (路卡命运罗盘) / 三才 is a Chinese-language family destiny analysis web app that integrates BaZi (八字/Four Pillars), Five Elements (五行), MBTI, and Western psychology to help Chinese families understand their children's strengths and educational path. The target audience is affluent Chinese families (especially in the US/Canada) seeking holistic child development guidance.
 
 ## Running the App
 
