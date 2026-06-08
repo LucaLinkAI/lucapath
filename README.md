@@ -12,6 +12,14 @@ open lucapath_app.html
 
 The app calls Claude directly from the browser. Set a valid Anthropic API key in the `analyzeWithClaude` and `analyzeFamilyDynamics` functions inside `lucapath_app.html`.
 
+## Published Pages
+
+Static pages in the repo root are published via GitHub Pages (served from `main` / root):
+
+- **八字命理橙皮书 · 入门与速查** — beginner-friendly BaZi reference & quick-lookup handbook: [`bazi_orange_book.html`](https://lucalinkai.github.io/lukapath/bazi_orange_book.html)
+
+Site root: <https://lucalinkai.github.io/lukapath/>
+
 ## Skills
 
 Five Claude Code skills live in `.claude/skills/`. Invoke the meta-skill for any report request — it routes to the right specialist automatically.
@@ -91,3 +99,4 @@ Always edit skill source files under `.claude/skills/`, then re-run `pack.py` to
 - `PRD/LucaPath_product_design.html` — personas, feature architecture, pricing, roadmap
 - `PRD/sancai_product_design.html` — earlier 三才 branding iteration
 - `lucapath_skill_architecture.html` — skill routing diagram
+- `bazi_orange_book.html` — 八字命理橙皮书, the BaZi intro & quick-reference handbook (published — see [Published Pages](#published-pages))
