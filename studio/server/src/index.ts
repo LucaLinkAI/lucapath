@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import fs from 'node:fs';
-import { PORT, OUTPUT_ROOT, PROJECT_ROOT, EXPECTED_SKILLS } from './config.ts';
+import path from 'node:path';
+import { PORT, OUTPUT_ROOT, PROJECT_ROOT, STUDIO_DIR, EXPECTED_SKILLS } from './config.ts';
 import { authRouter } from './routes/auth.routes.ts';
 import { chatRouter } from './routes/chat.routes.ts';
 import { artifactRouter } from './routes/artifact.routes.ts';
@@ -20,6 +21,19 @@ app.use('/api/auth', authRouter);
 app.use('/api/chat', chatRouter);
 app.use('/api/artifact', artifactRouter);
 app.use('/api/upload', uploadRouter);
+
+// In a packaged build the React client is pre-built to client/dist and served from this
+// same origin, so the client's relative `/api` calls resolve here. In dev this directory
+// is absent (the Vite dev server serves the UI on :3000 and proxies /api), so this block
+// is a no-op. The SPA fallback regex deliberately excludes /api so API 404s stay JSON.
+const CLIENT_DIST = path.join(STUDIO_DIR, 'client', 'dist');
+if (fs.existsSync(CLIENT_DIST)) {
+  app.use(express.static(CLIENT_DIST));
+  app.get(/^(?!\/api\/).*/, (_req, res) => {
+    res.sendFile(path.join(CLIENT_DIST, 'index.html'));
+  });
+  console.log(`  │  serving client: ${CLIENT_DIST}`);
+}
 
 app.listen(PORT, async () => {
   console.log(`\n  ┌─ LucaPath Studio server`);

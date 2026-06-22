@@ -1,0 +1,37 @@
+{
+  "name": "lucapath-studio-electron",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Electron desktop shell for LucaPath Studio (local, subscription-auth).",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.lucalink.lucapath-studio",
+    "productName": "LucaPath",
+    "directories": { "output": "dist" },
+    "asar": true,
+    "files": ["main.cjs", "package.json"],
+    "extraResources": [
+      {
+        "from": "../server",
+        "to": "app-tree/studio/server",
+        "filter": ["**/*", "!output/**", "!**/*.log"]
+      },
+      { "from": "../node_modules", "to": "app-tree/studio/node_modules" },
+      { "from": "../client/dist", "to": "app-tree/studio/client/dist" },
+      { "from": "../../.claude/skills", "to": "app-tree/.claude/skills" }
+    ],
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.productivity",
+      "identity": null
+    }
+  }
+}

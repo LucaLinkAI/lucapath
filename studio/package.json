@@ -12,7 +12,9 @@
     "dev:server": "npm --workspace server run dev",
     "dev:client": "npm --workspace client run dev",
     "build": "npm --workspace client run build",
-    "start": "npm --workspace server run start"
+    "start": "npm --workspace server run start",
+    "electron:dev": "npm run build && npm --prefix electron start",
+    "electron:build": "npm run build && npm --prefix electron run dist"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

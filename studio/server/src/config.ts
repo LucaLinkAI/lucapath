@@ -4,8 +4,12 @@ import path from 'node:path';
 // server/src/config.ts  ->  studio/  ->  PROJECT_ROOT
 const here = path.dirname(fileURLToPath(import.meta.url)); // .../studio/server/src
 export const STUDIO_DIR = path.resolve(here, '..', '..'); // .../studio
-export const PROJECT_ROOT = path.resolve(STUDIO_DIR, '..'); // .../LucaPath (holds .claude/skills)
-export const OUTPUT_ROOT = path.join(STUDIO_DIR, 'output');
+// PROJECT_ROOT holds .claude/skills. Defaults to studio/.. (the repo root); the packaged
+// Electron app overrides it to point at the bundled skills tree in Resources.
+export const PROJECT_ROOT = process.env.PROJECT_ROOT ?? path.resolve(STUDIO_DIR, '..');
+// Where generated reports + uploads land. Defaults to studio/output; the packaged app
+// overrides it to a writable userData dir (the .app Resources tree is read-only).
+export const OUTPUT_ROOT = process.env.OUTPUT_ROOT ?? path.join(STUDIO_DIR, 'output');
 
 export const PORT = Number(process.env.PORT ?? 8787);
 

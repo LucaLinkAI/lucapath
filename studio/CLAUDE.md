@@ -35,6 +35,36 @@ for `✓ authed · skills OK`.
 
 Other scripts: `npm run build` (client typecheck + Vite build), `npm start` (server only).
 
+## Packaging as a Mac app (Electron)
+
+`electron/` wraps the whole app into a double-clickable **`LucaPath.app`** for team
+self-use. The Electron main process (`electron/main.cjs`) starts the existing Express server
+as a child process (via a login shell, so a Finder-launched app inherits the user's PATH —
+the same mechanism lets the Agent SDK find `claude`), then opens a window at it. Express also
+serves the built React client (`index.ts` mounts `client/dist` when present), so the renderer
+is plain same-origin web content. Auth is unchanged: the machine's logged-in Claude Code
+subscription, **no API key**.
+
+```bash
+cd studio/electron && npm install     # electron + electron-builder (one-time, NOT shipped)
+cd studio
+npm run electron:dev      # build client + run the shell locally (test the packaged-like flow)
+npm run electron:build    # build client + electron-builder → studio/electron/dist/LucaPath-*.dmg
+```
+
+**Per-machine prerequisites** (inherent to subscription auth): **Node.js on PATH** and a
+**logged-in Claude Code** (`claude` in a terminal). The Landing auth gate surfaces a
+friendly message if Claude isn't logged in.
+
+How it's bundled (`electron/package.json` → `build`): the real directory layout is shipped
+into `Resources/app-tree/` as **plain files (extraResources, not asar)** — `studio/server`,
+the hoisted `studio/node_modules`, `studio/client/dist`, and `../.claude/skills` — preserving
+the `studio/` + sibling `.claude/` layout so `config.ts`'s `PROJECT_ROOT` resolves and the
+Agent SDK / Claude Code can read skill files from a real path. At runtime the shell sets
+`PORT` (free port), `PROJECT_ROOT` (the bundled tree), and `OUTPUT_ROOT`
+(`<userData>/output`, writable) — all read by `server/src/config.ts`. Unsigned by default
+(`mac.identity: null`); first launch may need right-click → Open or `xattr -cr LucaPath.app`.
+
 ## Architecture
 
 Two npm workspaces: **`server/`** (Express + Agent SDK, TypeScript run via `tsx`) and
