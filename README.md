@@ -49,7 +49,7 @@ npm run dev   # client :3000 · server :8787
 
 ![八字命理橙皮书](docs/screenshots/bazi-orange-book.png)
 
-在线阅读：<https://lucalinkai.github.io/lukapath/Publish/bazi_orange_book.html>
+在线阅读：<https://lucalinkai.github.io/lucapath/Publish/bazi_orange_book.html>
 
 ---
 
@@ -71,10 +71,10 @@ Static pages are served from GitHub Pages (`main` branch). Files live in `Publis
 
 | File | Format | Link |
 |------|--------|------|
-| `bazi_orange_book.html` | HTML | <https://lucalinkai.github.io/lukapath/Publish/bazi_orange_book.html> |
-| `bazi_orange_book.epub` | EPUB | [download](https://lucalinkai.github.io/lukapath/Publish/bazi_orange_book.epub) |
+| `bazi_orange_book.html` | HTML | <https://lucalinkai.github.io/lucapath/Publish/bazi_orange_book.html> |
+| `bazi_orange_book.epub` | EPUB | [download](https://lucalinkai.github.io/lucapath/Publish/bazi_orange_book.epub) |
 
-Site root: <https://lucalinkai.github.io/lukapath/>
+Site root: <https://lucalinkai.github.io/lucapath/>
 
 ## Skills
 
